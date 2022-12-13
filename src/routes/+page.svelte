@@ -1,59 +1,53 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script lang="ts">
+  import {typefaces} from '../lib/typefaces';
+  import TypefacePreview from '../components/TypefacePreview.svelte'
+  import CursorVariationType from '../components/CursorVariationType.svelte'
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>OpenType Collective</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
+<section class="intro">
+  <div class="intro-text">
+    <h1>
+      <CursorVariationType text="OpenType Collective" />
+    </h1>
+    <h3>
+      A collection of open source typefaces that you can use on any opensource project.
+    </h3>
+  </div>
+</section>
+
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+  {#each typefaces as typeface}
+    <TypefacePreview typeface={typeface} />
+  {/each}
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+  .intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-	h1 {
-		width: 100%;
-	}
+  .intro-text {
+    margin-bottom: 200px;
+    width: 90%;
+    min-width: 800px;
+    text-align: center;
+  }
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+  h1 {
+    margin: 0px;
+    font-size: 140px;
+  }
+  h3 {
+    font-size: 40px;
+    font-variation-settings: "opsz" 40, "wght" 300, "SOFT" 0, "WONK" 1;
+    margin: 0px;
+  }
 </style>
