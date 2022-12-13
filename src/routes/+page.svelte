@@ -35,6 +35,7 @@
   }
 
   .intro-text {
+    margin-top: 40px;
     margin-bottom: 200px;
     width: 90%;
     max-width: 800px;
