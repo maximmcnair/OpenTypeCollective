@@ -37,7 +37,7 @@
   .intro-text {
     margin-bottom: 200px;
     width: 90%;
-    min-width: 800px;
+    max-width: 800px;
     text-align: center;
   }
 
