@@ -67,6 +67,8 @@
 		z-index: 99;
 		transition: all 0.3s;
 
+    display: none;
+
 		position: fixed;
 		top: 0px;
 		left: 0px;

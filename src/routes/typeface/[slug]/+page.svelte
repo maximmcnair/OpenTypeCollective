@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	import { typefaces } from '../../../lib/typefaces';
+	import autosize from '../../../lib/autosize';
 	import pangrams from '../../../lib/pangrams';
 	import typefaceMetaData from '../../../lib/typefaceMetaData.json';
 	import { characterSets } from '../../../lib/character-sets';
@@ -12,6 +13,7 @@
 	const typeface = typefaces.find((t) => t.name === typefacename);
 	const metaData = typeface ? typefaceMetaData[typeface.metaDataKey] : {};
 
+	// type tester
 	let typeTesterValue = pangrams[0];
 	const namedVariations = Object.entries(metaData.namedVariations || []).map((v) => {
 		return {
@@ -20,15 +22,17 @@
 		};
 	});
 
-	function handleCopyVariation(variation) {
-		navigator.clipboard.writeText(`font-variation-settings: ${variation};`);
-	}
-
+	// pangram
 	function randomPangram() {
 		const max = pangrams.length;
 		const min = 0;
 		const randomValue = Math.floor(Math.random() * (max - min) + min);
 		typeTesterValue = pangrams[randomValue];
+	}
+
+	//
+	function handleCopyVariation(variation) {
+		navigator.clipboard.writeText(`font-variation-settings: ${variation};`);
 	}
 
 	// Character cursor hover
@@ -58,16 +62,16 @@
 				this.mouse.y - heightOffset
 			}px)`;
 
-      this.DOM.el.innerHTML = this.char;
+			this.DOM.el.innerHTML = this.char;
 
 			if (this.char) {
-			  style.display = "flex";
-			  style.transform = `translate(${this.mouse.x - widthOffset}px, ${
-			    this.mouse.y - heightOffset
-			  }px)`;
+				style.display = 'flex';
+				style.transform = `translate(${this.mouse.x - widthOffset}px, ${
+					this.mouse.y - heightOffset
+				}px)`;
 			} else {
-			  style.display = "none";
-			  style.backgroundImage = null;
+				style.display = 'none';
+				style.backgroundImage = null;
 			}
 		}
 
@@ -100,11 +104,19 @@
 	<header class="header">
 		<h1 style:font-family={typeface.name} class="header-typename">{typefacename}</h1>
 		<span class="header-creator"
+      style:font-family="var(--typeface-body)"
 			>by <a href={typeface.source} target="_blank">{typeface.foundery}</a></span
 		>
 	</header>
 
 	<section class="tester">
+		<textarea
+			style:font-family={typeface?.name}
+			bind:value={typeTesterValue}
+			style:font-size={80}
+			use:autosize
+		/>
+
 		<label class="pangram">
 			<span class="pangram-title" on:click={randomPangram}>Pick a Pangram</span>
 			<div class="pangram-options">
@@ -117,11 +129,24 @@
 				{/each}
 			</div>
 		</label>
+	</section>
 
-		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
+	<section class="para-preview">
+		<span class="para-preview__type" style:line-height="1.4" style:font-size="40px" style:font-family={typeface?.name}>At consectetur lorem donec massa sapien faucibus et.</span>
+		<span class="para-preview__type" style:line-height="1.75" style:font-size="18px" style:font-family={typeface?.name}>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Massa vitae tortor condimentum lacinia quis vel eros donec ac.
+			At tempor commodo ullamcorper a lacus vestibulum sed arcu. Feugiat pretium nibh ipsum
+			consequat. Diam quis enim lobortis scelerisque fermentum dui faucibus in. Vitae tortor
+			condimentum lacinia quis vel eros donec. Tellus elementum sagittis vitae et leo. Ultrices dui
+			sapien eget mi proin sed. Posuere lorem ipsum dolor sit amet. Sapien eget mi proin sed libero
+			enim sed faucibus turpis. Varius vel pharetra vel turpis nunc eget lorem. Sit amet porttitor
+			eget dolor morbi.
+		</span>
 	</section>
 
 	<section class="named-variations">
+		<h5 class="subtitle">Preset Variations</h5>
 		{#each namedVariations as v}
 			<div class="named-variation">
 				<small
@@ -157,7 +182,14 @@
 		{/each}
 	</section>
 
+	<section class="custom-variations">
+		<h5 class="subtitle">Custom Variations</h5>
+
+	  <TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
+	</section>
+
 	<section class="character-sets">
+		<h5 class="subtitle">Character Sets</h5>
 		{#each characterSets as set}
 			<div class="character-set">
 				<span class="character-set__title">{set[0]}</span>
@@ -180,8 +212,8 @@
 <style>
 	.header {
 		text-align: center;
-		margin-top: 60px;
-		margin-bottom: 30px;
+		margin-top: 30px;
+		margin-bottom: 70px;
 	}
 
 	.header-typename {
@@ -202,9 +234,18 @@
 		align-items: center;
 	}
 
+	textarea {
+		text-align: center;
+	}
+
+  /* Tester */
+  .tester {
+    margin-bottom: 50px;
+  }
+
 	.pangram {
 		display: block;
-		display: none;
+		/* display: none; */
 		text-align: center;
 		margin-bottom: 50px;
 	}
@@ -254,6 +295,16 @@
 		border-color: var(--color-white);
 	}
 
+	.para-preview {
+		width: 90%;
+		max-width: var(--layout-max-width);
+	}
+
+	.para-preview__type {
+    display: block;
+    margin-bottom: 20px;
+  }
+
 	.named-variations {
 		margin-top: 80px;
 		width: 90%;
@@ -284,6 +335,18 @@
 		transform: translate(8px, 4px);
 	}
 
+  /* Custom Variations */
+  .custom-variations {
+		margin-top: 80px;
+		width: 90%;
+		max-width: var(--layout-max-width);
+	}
+
+  .custom-variations h5 {
+    margin-bottom: 40px;
+  }
+
+  /* Character Sets */
 	.character-sets {
 		margin-top: 80px;
 		width: 90%;
@@ -337,13 +400,13 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 		pointer-events: none;
-    background-color: var(--color-white);
-    color: var(--color-black);
-    font-size: 160px;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+		background-color: var(--color-white);
+		color: var(--color-black);
+		font-size: 160px;
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		z-index: 2;
 	}
 </style>

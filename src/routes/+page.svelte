@@ -15,6 +15,7 @@
 			<CursorVariationType text="OpenType Collective" />
 		</h1>
 		<h3>A collection of open source typefaces that you can use on any opensource project.</h3>
+		<h3>Build a typographic system from our selected variable fonts then download fonts and CSS.</h3>
 	</div>
 </section>
 
@@ -44,9 +45,10 @@
 		margin: 0px;
 		font-size: 140px;
 	}
+
 	h3 {
 		font-size: 40px;
 		font-variation-settings: 'opsz' 40, 'wght' 300, 'SOFT' 0, 'WONK' 1;
-		margin: 0px;
+		margin: 0px 0px 20px 0px;
 	}
 </style>
