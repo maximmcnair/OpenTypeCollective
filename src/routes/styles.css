@@ -1,66 +1,77 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
 /* Anybody */
 @font-face {
-  src: url("/Anybody/Anybody.woff2") format("woff2");
+  src: url("/typefaces/Anybody/Anybody.woff2") format("woff2");
   font-family: "Anybody";
   font-style: normal;
 }
 /* Epilogue */
 @font-face {
-  src: url("/Epilogue/Epilogue.woff2") format("woff2");
+  src: url("/typefaces/Epilogue/Epilogue.woff2") format("woff2");
   font-family: "Epilogue";
   font-style: normal;
 }
 /* Fraunces */
 @font-face {
-  src: url("/Fraunces/Fraunces.woff2") format("woff2");
+  src: url("/typefaces/Fraunces/Fraunces.woff2") format("woff2");
   font-family: "Fraunces";
   font-style: normal;
 }
 /* Inter */
 @font-face {
-  src: url("/Inter/Inter.var.woff2") format("woff2");
+  src: url("/typefaces/Inter/Inter.var.woff2") format("woff2");
   font-family: "Inter";
   font-style: normal;
 }
 /* Mona Sans */
 @font-face {
-  src: url("/Mona Sans/Mona-Sans.woff2") format("woff2");
+  src: url("/typefaces/Mona Sans/Mona-Sans.woff2") format("woff2");
   font-family: "Mona Sans";
   font-style: normal;
 }
 /* Hubot Sans */
 @font-face {
-  src: url("/Hubot Sans/Hubot-Sans.woff2") format("woff2");
+  src: url("/typefaces/Hubot Sans/Hubot-Sans.woff2") format("woff2");
   font-family: "Hubot Sans";
   font-style: normal;
 }
 /* Trispace */
 @font-face {
-  src: url("/Trispace/Trispace.woff2") format("woff2");
+  src: url("/typefaces/Trispace/Trispace.woff2") format("woff2");
   font-family: "Trispace";
   font-style: normal;
 }
 /* Source Code Pro */
 @font-face {
-  src: url("/Source Code Pro/SourceCodeVariable-Roman.otf.woff2") format("woff2");
+  src: url("/typefaces/Source Code Pro/SourceCodeVariable-Roman.otf.woff2") format("woff2");
   font-family: "Source Code Pro";
   font-style: normal;
 }
 /* Source Sans */
 @font-face {
-  src: url("/Source Sans/SourceSans3VF-Roman.otf.woff2") format("woff2");
+  src: url("/typefaces/Source Sans/SourceSans3VF-Roman.otf.woff2") format("woff2");
   font-family: "Source Sans";
   font-style: normal;
 }
 /* Source Serif */
 @font-face {
-  src: url("/Source Serif/SourceSerif4Variable-Roman.otf.woff2") format("woff2");
+  src: url("/typefaces/Source Serif/SourceSerif4Variable-Roman.otf.woff2") format("woff2");
   font-family: "Source Serif";
   font-style: normal;
 }
 /* Space Grotesk */
 @font-face {
-  src: url("/Space Grotesk/SpaceGrotesk.woff2") format("woff2");
+  src: url("/typefaces/Space Grotesk/SpaceGrotesk.woff2") format("woff2");
   font-family: "Space Grotesk";
   font-style: normal;
 }
@@ -96,6 +107,8 @@ html {
   --color-grey-darker: #131515;
   --color-black: #0d0d0d;
   --color-gold: #d09f69;
+  /* Layout */
+  --layout-max-width: 800px;
 }
 
 body {
@@ -105,13 +118,8 @@ body {
   /* Dark mode (this can be removed) */
   background: black;
   color: white;
-}
-
-.content {
-  max-width: 800px;
-  width: 100%;
-  padding: 0px 10px;
-  margin-top: 50px;
+  padding: 0px;
+  margin: 0px;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -155,11 +163,16 @@ small, .type-small {
   font-size: var(--typesize-small);
 }
 
-/* Example use in custom component */
-.custom-component {
-  font-size: var(--typesize-h4); 
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--color-gold);
+  font-weight: 800;
 }
 
+a:hover {
+  text-decoration: underline;
+}
 
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
@@ -225,3 +238,31 @@ input[type=range]::-moz-range-track {
   cursor: pointer;
   background: var(--color-grey);
 }
+
+select {
+  padding: 15px 0px;
+  border-radius: 50px;
+  background-color: var(--color-black);
+  color: var(--color-grey);
+  border: 2px solid var(--color-grey-light);
+  font-family: var(--typeface-body);
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+input,
+textarea {
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: 60px;
+  border: none;
+  width: 100%;
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+

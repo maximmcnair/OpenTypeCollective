@@ -3,20 +3,24 @@ type Variation = [string, string, number, number, number, number];
 
 export interface Typeface {
   name: TypefaceName;
+  // NOTE this comes from actual woff2 file
+  metaDataKey: string;
   source: string;
   foundery: string;
   variations: Variation[];
   categories: string[];
 }
 
-enum TypefaceName {
-  Inter = 'Inter'
+enum License {
+  OFL = 'OFL',
 }
 
 export const typefaces = [
   {
     name: "Inter",
+    metaDataKey: 'Inter',
     source: "https://github.com/rsms/inter",
+    license: License.SIL,
     foundery: "rsms",
     variations: [
       ['wght', 'Weight', 100, 900, 400, 1],
@@ -25,7 +29,9 @@ export const typefaces = [
   },
   {
     name: "Anybody",
-    source: "",
+    metaDataKey: 'Anybody UltraCondensed Thin',
+    source: "https://github.com/Etcetera-Type-Co/Epilogue",
+    license: License.OFL,
     foundery: "ETC",
     variations: [
       ['wght', 'Weight', 200, 900, 100, 1],
@@ -35,7 +41,9 @@ export const typefaces = [
   },
   {
     name: "Epilogue",
-    source: "",
+    metaDataKey: 'Epilogue Italic',
+    source: "https://github.com/Etcetera-Type-Co/Epilogue",
+    license: License.OFL,
     foundery: "ETC",
     variations: [
       ['wght', 'Weight', 100, 900, 400, 10],
@@ -43,7 +51,9 @@ export const typefaces = [
   },
   {
     name: "Trispace",
-    source: "",
+    metaDataKey: 'Trispace Thin',
+    source: "https://github.com/Etcetera-Type-Co/Trispace",
+    license: License.OFL,
     foundery: "ETC",
     variations: [
       ['wght', 'Weight', 100, 800, 100, 1],
@@ -52,18 +62,22 @@ export const typefaces = [
   },
   {
     name: "Fraunces",
-    source: "",
-    foundery: "",
+    metaDataKey: 'Fraunces 9pt Black',
+    source: "https://github.com/undercasetype/fraunces",
+    license: License.OFL,
+    foundery: "Undercase",
     variations: [
       ['opsz', 'Optical Size', 9, 144, 9, 1],
       ['wght', 'Weight', 100, 900, 900, 1],
       ['SOFT', 'Softness', 0, 100, 0, 1],
-      ['WONK', 'Wonky', 0, 1, 1, 1],
+      // ['WONK', 'Wonky', 0, 1, 1, 1],
     ]
   },
   {
     name: "Hubot Sans",
-    source: "",
+    metaDataKey: 'Hubot-Sans ExtraLight',
+    source: "https://github.com/github/hubot-sans",
+    license: License.OFL,
     foundery: "Github + Degarism",
     variations: [
       ['wght', 'Weight', 200, 900, 200, 1],
@@ -73,7 +87,9 @@ export const typefaces = [
   },
   {
     name: "Mona Sans",
-    source: "",
+    metaDataKey: 'Mona Sans Thin',
+    source: "https://github.com/github/mona-sans",
+    license: License.OFL,
     foundery: "Github + Degarism",
     variations: [
       ['wght', 'Weight', 200, 900, 200, 1],
@@ -83,7 +99,9 @@ export const typefaces = [
   },
   {
     name: "Source Code Pro",
-    source: "",
+    metaDataKey: 'Source Code Variable',
+    source: "https://github.com/adobe-fonts/source-code-pro",
+    license: License.OFL,
     foundery: "Adobe",
     variations: [
       ['wght', 'Weight', 200, 900, 200, 1],
@@ -91,7 +109,9 @@ export const typefaces = [
   },
   {
     name: "Source Sans",
-    source: "",
+    metaDataKey: 'Source Sans 3 VF',
+    source: "https://github.com/adobe-fonts/source-sans",
+    license: License.OFL,
     foundery: "Adobe",
     variations: [
       ['wght', 'Weight', 200, 900, 200, 1],
@@ -99,7 +119,9 @@ export const typefaces = [
   },
   {
     name: "Source Serif",
-    source: "",
+    metaDataKey: 'Source Serif 4 Variable',
+    source: "https://github.com/adobe-fonts/source-serif",
+    license: License.OFL,
     foundery: "Adobe",
     variations: [
       ['wght', 'Weight', 200, 900, 400, 1],
@@ -108,7 +130,9 @@ export const typefaces = [
   },
   {
     name: "Space Grotesk",
-    source: "",
+    metaDataKey: 'Space Grotesk Light',
+    source: "https://github.com/floriankarsten/space-grotesk",
+    license: License.OFL,
     foundery: "Florain Karsten + Colophon",
     variations: [
       ['wght', 'Weight', 300, 700, 300, 1],
