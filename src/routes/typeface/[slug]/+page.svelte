@@ -103,8 +103,7 @@
 <article class="content" style:font-family={typeface.name}>
 	<header class="header">
 		<h1 style:font-family={typeface.name} class="header-typename">{typefacename}</h1>
-		<span class="header-creator"
-      style:font-family="var(--typeface-body)"
+		<span class="header-creator" style:font-family="var(--typeface-body)"
 			>by <a href={typeface.source} target="_blank">{typeface.foundery}</a></span
 		>
 	</header>
@@ -132,8 +131,18 @@
 	</section>
 
 	<section class="para-preview">
-		<span class="para-preview__type" style:line-height="1.4" style:font-size="40px" style:font-family={typeface?.name}>At consectetur lorem donec massa sapien faucibus et.</span>
-		<span class="para-preview__type" style:line-height="1.75" style:font-size="18px" style:font-family={typeface?.name}>
+		<span
+			class="para-preview__type"
+			style:line-height="1.4"
+			style:font-size="40px"
+			style:font-family={typeface?.name}>At consectetur lorem donec massa sapien faucibus et.</span
+		>
+		<span
+			class="para-preview__type"
+			style:line-height="1.75"
+			style:font-size="18px"
+			style:font-family={typeface?.name}
+		>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Massa vitae tortor condimentum lacinia quis vel eros donec ac.
 			At tempor commodo ullamcorper a lacus vestibulum sed arcu. Feugiat pretium nibh ipsum
@@ -185,7 +194,7 @@
 	<section class="custom-variations">
 		<h5 class="subtitle">Custom Variations</h5>
 
-	  <TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
+		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
 	</section>
 
 	<section class="character-sets">
@@ -238,10 +247,10 @@
 		text-align: center;
 	}
 
-  /* Tester */
-  .tester {
-    margin-bottom: 50px;
-  }
+	/* Tester */
+	.tester {
+		margin-bottom: 50px;
+	}
 
 	.pangram {
 		display: block;
@@ -301,9 +310,9 @@
 	}
 
 	.para-preview__type {
-    display: block;
-    margin-bottom: 20px;
-  }
+		display: block;
+		margin-bottom: 20px;
+	}
 
 	.named-variations {
 		margin-top: 80px;
@@ -335,18 +344,18 @@
 		transform: translate(8px, 4px);
 	}
 
-  /* Custom Variations */
-  .custom-variations {
+	/* Custom Variations */
+	.custom-variations {
 		margin-top: 80px;
 		width: 90%;
 		max-width: var(--layout-max-width);
 	}
 
-  .custom-variations h5 {
-    margin-bottom: 40px;
-  }
+	.custom-variations h5 {
+		margin-bottom: 40px;
+	}
 
-  /* Character Sets */
+	/* Character Sets */
 	.character-sets {
 		margin-top: 80px;
 		width: 90%;

@@ -14,7 +14,7 @@ typefaces.forEach(t => {
     const metaData = {};
     const font = fontkit.openSync(`./static/typefaces/${t}/${f}`);
     metaData.name = font.fullName;
-    metaData.characterSet = font.characterSet;
+    // metaData.characterSet = font.characterSet;
     metaData.availableFeatures = font.availableFeatures;
     metaData.variationAxes = font.variationAxes;
     try {

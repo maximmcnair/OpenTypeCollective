@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-
+  
   class Cursor {
     constructor(el) {
       this.DOM = { el: el };

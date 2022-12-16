@@ -2,7 +2,7 @@ type Variation = [string, string, number, number, number, number];
 // value, name, min, max, default, step
 
 export interface Typeface {
-  name: TypefaceName;
+  name: string;
   // NOTE this comes from actual woff2 file
   metaDataKey: string;
   source: string;

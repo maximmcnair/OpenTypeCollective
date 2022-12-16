@@ -42,7 +42,7 @@
 		currentScroll = prevScroll;
 	});
 
-	$: console.log(visible);
+	// $: console.log(visible);
 </script>
 
 <svelte:window on:scroll={handleScroll} />
