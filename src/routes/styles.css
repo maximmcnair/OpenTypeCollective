@@ -21,18 +21,6 @@
 	font-family: 'Epilogue';
 	font-style: normal;
 }
-/* Fraunces */
-@font-face {
-	src: url('/typefaces/Fraunces/Fraunces.woff2') format('woff2');
-	font-family: 'Fraunces';
-	font-style: normal;
-}
-/* Inter */
-@font-face {
-	src: url('/typefaces/Inter/Inter.var.woff2') format('woff2');
-	font-family: 'Inter';
-	font-style: normal;
-}
 /* Mona Sans */
 @font-face {
 	src: url('/typefaces/Mona Sans/Mona-Sans.woff2') format('woff2');
