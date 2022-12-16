@@ -4,6 +4,7 @@
 	import TypeSystemCSS from '../../components/TypeSystemCSS.svelte';
 	import { onDestroy } from 'svelte';
 	import typeSystemStore from '../../stores/typeSystem';
+	import TypeSystemSettings from '../../components/TypeSystemSettings.svelte';
 
 	let typeSystem = {};
 
@@ -26,9 +27,13 @@
 	</section>
 
 	<section class="content system">
-		{#each Object.values(typeSystem) as typeEntry}
-			<TypeSystemEntry {typeEntry} />
-		{/each}
+		<TypeSystemSettings />
+
+		<div class="content system-enteries">
+			{#each Object.values(typeSystem) as typeEntry}
+				<TypeSystemEntry {typeEntry} />
+			{/each}
+		</div>
 	</section>
 
 	<section class="content output">
@@ -43,7 +48,11 @@
 	}
 
 	.system {
-		margin-top: 80px;
+		margin-top: 60px;
+	}
+
+	.system-enteries {
+		margin-top: 20px;
 	}
 
 	.output {

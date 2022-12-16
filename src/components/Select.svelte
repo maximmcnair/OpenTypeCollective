@@ -5,17 +5,17 @@
 	interface Option {
 		name: string;
 		value: Value;
-		style: string;
+		style?: string;
 	}
 
 	export let options: Option[] = [];
 	export let selectedValue: Value;
-	export let closeOnSelection: boolean = true;
+	export let placeholder: string;
 	export let onChange: (value: Value) => void;
 
 	function handleSelection(value: Value) {
 		onChange(value);
-		if (closeOnSelection) isOpen = false;
+		isOpen = false;
 	}
 
 	let isOpen = false;
@@ -36,14 +36,14 @@
 	// $: console.log('selected', selectedValue, selected);
 </script>
 
-<section class="select">
+<section class="select" class:open={isOpen}>
 	<div
 		class="select-selected"
 		on:click={() => toggleOptions()}
 		on:keypress={() => toggleOptions()}
 		style={selected?.style}
 	>
-		{!!selected ? selected.name : 'Select...'}
+		{!!selected ? selected.name : placeholder ? placeholder : 'Select...'}
 	</div>
 	<div class="select-options" class:open={isOpen}>
 		{#each options as option}
@@ -68,16 +68,21 @@
 
 <style>
 	.select {
-		--select-background: var(--color-white);
+		--select-background: var(--color-black);
 		--select-height: 50px;
 		--select-max-rows: 5.5;
-		--select-font-size: 24px;
-		--select-padding: 6px 10px;
+		--select-font-size: 19px;
+		--select-padding: 10px 15px;
 
 		width: 100%;
 		position: relative;
 		height: var(--select-height);
 		background-color: var(--select-background);
+		border-right: 1px solid var(--color-white);
+	}
+	.select.open {
+		background-color: var(--color-white);
+		color: var(--color-black);
 	}
 	.select-selected {
 		height: var(--select-height);
@@ -98,12 +103,14 @@
 		right: 0px;
 		display: none;
 		z-index: 8;
+		border: 2px solid var(--color-white);
 	}
 	.select-options.open {
 		display: block;
 	}
 	.select-option {
 		background-color: var(--select-background);
+		color: var(--color-white);
 		height: var(--select-height);
 		padding: var(--select-padding);
 		cursor: pointer;
@@ -111,8 +118,13 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-size: var(--select-font-size);
+		user-select: none;
+		transition: all 0.1s;
 	}
-
+	.select-option:hover {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
 	.select-bg {
 		position: fixed;
 		top: 0px;

@@ -66,7 +66,6 @@
 		padding: 10px 30px 10px 20px;
 		background: var(--color-black);
 		height: 70px;
-		/* border-bottom: 2px solid var(--color-white); */
 		display: flex;
 		justify-content: space-between;
 		z-index: 99;
