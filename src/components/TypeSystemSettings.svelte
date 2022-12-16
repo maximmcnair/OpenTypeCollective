@@ -6,6 +6,7 @@
 	import Select from './Select.svelte';
 	import Number from './Number.svelte';
 	import { onDestroy } from 'svelte';
+	import SettingsVariation from './SettingsVariation.svelte';
 
 	export let setSelectedEntry: (e: string) => void;
 	export let selectedEntry: string;
@@ -18,8 +19,17 @@
 
 	onDestroy(unsubscribe);
 
-	// Enteries
-	const enteries: string[] = Object.keys(typeSystem);
+	// entries
+	const entries: string[] = Object.keys(typeSystem);
+
+	// variations
+	function getVariations(typeEntry: TypeEntry) {
+		const typeface = typefaces.find((t) => t.name === typeEntry.typeface);
+		return typeface?.variations;
+	}
+
+	let variations = [];
+	$: variations = getVariations(typeEntry);
 
 	// Type entry
 	let typeEntry = typeSystem[selectedEntry];
@@ -51,12 +61,20 @@
 
 	let namedVariations: any[] = [];
 	$: namedVariations = getNamedVariations(getMetaData(typeEntry));
+
+	let variationsByKey = {};
+	$: variationsByKey = typeEntry.variations.reduce((acc, val) => {
+		acc[val[0]] = val[1];
+		return acc;
+	}, {});
+
+	$: console.log(typeEntry);
 </script>
 
 <div class="container">
 	<div class="settings">
 		<Select
-			options={enteries.map((e) => ({
+			options={entries.map((e) => ({
 				name: e,
 				value: e
 			}))}
@@ -75,10 +93,30 @@
 			placeholder="Typeface"
 			selectedValue={typeEntry.typeface}
 			onChange={(name) => {
+				const typeface = typefaces.find((t) => t.name === typeEntry.typeface);
 				updateTypeEntry({
 					typeface: name,
 					// TODO set default variations
-					variations: []
+					variations: typeface?.variations.map((v) => [v[0], v[5]]) || []
+				});
+			}}
+		/>
+		<Number
+			value={parseFloat(typeEntry.lineHeight)}
+			postfix=""
+			step={0.1}
+			updateNumber={(lineHeight) => {
+				updateTypeEntry({
+					lineHeight: lineHeight.toFixed(1)
+				});
+			}}
+		/>
+		<Number
+			value={parseFloat(typeEntry.fontSize.replace('px', ''))}
+			postfix="px"
+			updateNumber={(fontSize) => {
+				updateTypeEntry({
+					fontSize: `${fontSize}px`
 				});
 			}}
 		/>
@@ -90,7 +128,7 @@
 					t.variations
 				)}`
 			}))}
-			placeholder="Variation"
+			placeholder="Preset variation"
 			selectedValue={typeEntry.variations}
 			onChange={(variations) => {
 				updateTypeEntry({
@@ -98,25 +136,25 @@
 				});
 			}}
 		/>
-		<Number
-			value={parseFloat(typeEntry.lineHeight)}
-      postfix=""
-      step={0.1}
-			updateNumber={(lineHeight) => {
-				updateTypeEntry({
-          lineHeight: lineHeight.toFixed(1)
-				});
-			}}
-		/>
-		<Number
-			value={parseFloat(typeEntry.fontSize.replace('px', ''))}
-      postfix="px"
-			updateNumber={(fontSize) => {
-				updateTypeEntry({
-					fontSize: `${fontSize}px`
-				});
-			}}
-		/>
+		<div class="variations">
+			{#each variations as v}
+				<SettingsVariation
+					variation={v}
+					value={variationsByKey[v[0]]}
+					onChange={(key, val) => {
+						// TODO variations should be stored as an object
+						const currentVariations = typeEntry.variations.reduce((acc, val) => {
+							acc[val[0]] = val[1];
+							return acc;
+						}, {});
+						currentVariations[key] = parseInt(val);
+						updateTypeEntry({
+							variations: Object.entries(currentVariations)
+						});
+					}}
+				/>
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -124,7 +162,7 @@
 	.container {
 		position: absolute;
 		top: 20px;
-		right: 0px;
+		right: -140px;
 		z-index: 99;
 		height: 100%;
 	}
@@ -133,9 +171,13 @@
 		position: sticky;
 		top: 10px;
 		right: 0px;
-		width: 200px;
+		width: 240px;
 		border: 2px solid var(--color-gold);
 		background-color: var(--color-black);
+	}
+
+	.variations {
+		padding: 10px 15px;
 	}
 
 	/* old */
