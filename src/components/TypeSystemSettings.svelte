@@ -53,62 +53,93 @@
 	$: namedVariations = getNamedVariations(getMetaData(typeEntry));
 </script>
 
-<div class="settings">
-	<Select
-		options={enteries.map((e) => ({
-			name: e,
-			value: e
-		}))}
-		placeholder=""
-		selectedValue={selectedEntry}
-		onChange={(entry) => {
-			setSelectedEntry(entry);
-		}}
-	/>
-	<Select
-		options={typefaces.map((t) => ({
-			name: t.name,
-			value: t.name,
-			style: `font-family: ${t.name};`
-		}))}
-		placeholder="Typeface"
-		selectedValue={typeEntry.typeface}
-		onChange={(name) => {
-			updateTypeEntry({
-				typeface: name,
-				// TODO set default variations
-				variations: []
-			});
-		}}
-	/>
-	<Select
-		options={namedVariations.map((t) => ({
-			name: t.name,
-			value: t.variations,
-			style: `font-family: ${typeEntry.typeface}; font-variation-settings: ${createCSSVariations(
-				t.variations
-			)}`
-		}))}
-		placeholder="Variation"
-		selectedValue={typeEntry.variations}
-		onChange={(variations) => {
-			updateTypeEntry({
-				variations
-			});
-		}}
-	/>
-	<Number
-		value={parseFloat(typeEntry.fontSize.replace('px', ''))}
-		updateNumber={(fontSize) => {
-			updateTypeEntry({
-				fontSize: `${fontSize}px`
-			});
-		}}
-	/>
+<div class="container">
+	<div class="settings">
+		<Select
+			options={enteries.map((e) => ({
+				name: e,
+				value: e
+			}))}
+			placeholder=""
+			selectedValue={selectedEntry}
+			onChange={(entry) => {
+				setSelectedEntry(entry);
+			}}
+		/>
+		<Select
+			options={typefaces.map((t) => ({
+				name: t.name,
+				value: t.name,
+				style: `font-family: ${t.name};`
+			}))}
+			placeholder="Typeface"
+			selectedValue={typeEntry.typeface}
+			onChange={(name) => {
+				updateTypeEntry({
+					typeface: name,
+					// TODO set default variations
+					variations: []
+				});
+			}}
+		/>
+		<Select
+			options={namedVariations.map((t) => ({
+				name: t.name,
+				value: t.variations,
+				style: `font-family: ${typeEntry.typeface}; font-variation-settings: ${createCSSVariations(
+					t.variations
+				)}`
+			}))}
+			placeholder="Variation"
+			selectedValue={typeEntry.variations}
+			onChange={(variations) => {
+				updateTypeEntry({
+					variations
+				});
+			}}
+		/>
+		<Number
+			value={parseFloat(typeEntry.lineHeight)}
+      postfix=""
+      step={0.1}
+			updateNumber={(lineHeight) => {
+				updateTypeEntry({
+          lineHeight: lineHeight.toFixed(1)
+				});
+			}}
+		/>
+		<Number
+			value={parseFloat(typeEntry.fontSize.replace('px', ''))}
+      postfix="px"
+			updateNumber={(fontSize) => {
+				updateTypeEntry({
+					fontSize: `${fontSize}px`
+				});
+			}}
+		/>
+	</div>
 </div>
 
 <style>
+	.container {
+		position: absolute;
+		top: 20px;
+		right: 0px;
+		z-index: 99;
+		height: 100%;
+	}
 	.settings {
+		display: block;
+		position: sticky;
+		top: 10px;
+		right: 0px;
+		width: 200px;
+		border: 2px solid var(--color-gold);
+		background-color: var(--color-black);
+	}
+
+	/* old */
+	.settings-horizontal {
 		position: sticky;
 		top: 10px;
 		left: 0px;
@@ -119,6 +150,5 @@
 		display: flex;
 		flex-direction: row;
 		z-index: 999;
-		gap: 0;
 	}
 </style>

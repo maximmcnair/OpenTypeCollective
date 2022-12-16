@@ -1,16 +1,18 @@
 <script lang="ts">
 	export let value: number;
+	export let postfix: string;
+	export let step: number = 1;
 	export let updateNumber: (val: number) => void;
 </script>
 
 <div class="number">
 	<input type="number" bind:value on:change={(evt) => updateNumber(evt.target.value)} />
-	<span>px</span>
+	<span>{postfix}</span>
 
 	<div
 		class="minus"
-		on:click={() => updateNumber(value - 1)}
-		on:keypress={() => updateNumber(value - 1)}
+		on:click={() => updateNumber(value - step)}
+		on:keypress={() => updateNumber(value - step)}
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +29,8 @@
 	</div>
 	<div
 		class="plus"
-		on:click={() => updateNumber(value + 1)}
-		on:keypress={() => updateNumber(value + 1)}
+		on:click={() => updateNumber(value + step)}
+		on:keypress={() => updateNumber(value + step)}
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +52,7 @@
 	.number {
 		display: flex;
 		position: relative;
-		width: 370px;
+		/* width: 370px; */
 	}
 
 	.number span {

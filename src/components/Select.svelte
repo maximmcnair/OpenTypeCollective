@@ -93,11 +93,11 @@
 		position: relative;
 		height: var(--select-height);
 		background-color: var(--select-background);
-		border-right: 1px solid var(--color-white);
+		/* border-right: 1px solid var(--color-white); */
 	}
 	.select.open {
-		background-color: var(--color-white);
-		color: var(--color-black);
+		/* background-color: var(--color-white); */
+		/* color: var(--color-black); */
 	}
 	.select-selected {
 		height: var(--select-height);
