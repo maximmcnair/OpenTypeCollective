@@ -1,79 +1,78 @@
 <script>
-  import { onMount } from 'svelte';
-  
-  class Cursor {
-    constructor(el) {
-      this.DOM = { el: el };
-      this.img = {
-        src: null,
-        height: null,
-        width: null,
-      };
-      this.mouse = { x: 0, y: 0 };
-      this.lastX = 0;
-      this.lastY = 0;
+	import { onMount } from 'svelte';
 
-      this.onMouseMoveEvt = (evt) => {
-        this.mouse = { x: evt.clientX, y: evt.clientY };
-        requestAnimationFrame(() => this.render());
-      };
-      window.addEventListener("mousemove", this.onMouseMoveEvt);
-    }
+	class Cursor {
+		constructor(el) {
+			this.DOM = { el: el };
+			this.img = {
+				src: null,
+				height: null,
+				width: null
+			};
+			this.mouse = { x: 0, y: 0 };
+			this.lastX = 0;
+			this.lastY = 0;
 
-    render() {
-      const style = this.DOM.el.style;
+			this.onMouseMoveEvt = (evt) => {
+				this.mouse = { x: evt.clientX, y: evt.clientY };
+				requestAnimationFrame(() => this.render());
+			};
+			window.addEventListener('mousemove', this.onMouseMoveEvt);
+		}
 
-      const heightOffset = 20 / 2;
-      const widthOffset = 20 / 2;
+		render() {
+			const style = this.DOM.el.style;
 
-      style.transform = `translate(${this.mouse.x - widthOffset}px, ${
-        this.mouse.y - heightOffset
-      }px)`;
+			const heightOffset = 20 / 2;
+			const widthOffset = 20 / 2;
 
-      console.log('render', this.mouse);
+			style.transform = `translate(${this.mouse.x - widthOffset}px, ${
+				this.mouse.y - heightOffset
+			}px)`;
 
-      // if (this.img.src) {
-      //   style.display = "block";
-      //   const heightOffset = this.img.height / 2;
-      //   const widthOffset = this.img.width / 2;
-      //   style.transform = `translate(${this.mouse.x - widthOffset}px, ${
-      //     this.mouse.y - heightOffset
-      //   }px)`;
-      //   style.backgroundImage = `url(${this.img.src})`;
-      //   style.width = `${this.img.width}px`;
-      //   style.height = `${this.img.height}px`;
-      // } else {
-      //   style.display = "none";
-      //   style.backgroundImage = null;
-      // }
-    }
+			console.log('render', this.mouse);
 
-    setImage(src, height, width) {
-      this.img = { src, height, width };
-    }
-  }
+			// if (this.img.src) {
+			//   style.display = "block";
+			//   const heightOffset = this.img.height / 2;
+			//   const widthOffset = this.img.width / 2;
+			//   style.transform = `translate(${this.mouse.x - widthOffset}px, ${
+			//     this.mouse.y - heightOffset
+			//   }px)`;
+			//   style.backgroundImage = `url(${this.img.src})`;
+			//   style.width = `${this.img.width}px`;
+			//   style.height = `${this.img.height}px`;
+			// } else {
+			//   style.display = "none";
+			//   style.backgroundImage = null;
+			// }
+		}
 
-  onMount(async () => {
-    const cursor = new Cursor(document.querySelector(".cursor"));
-  });
+		setImage(src, height, width) {
+			this.img = { src, height, width };
+		}
+	}
+
+	onMount(async () => {
+		const cursor = new Cursor(document.querySelector('.cursor'));
+	});
 </script>
-
 
 <div class="cursor" />
 
 <style>
-  .cursor {
-    width: 20px;
-    height: 20px;
-    max-width: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border: 1px solid var(--color-white);
-    border-radius: 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 2;
-  }
+	.cursor {
+		width: 20px;
+		height: 20px;
+		max-width: 100vh;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		border: 1px solid var(--color-white);
+		border-radius: 50%;
+		background-size: contain;
+		background-repeat: no-repeat;
+		pointer-events: none;
+		z-index: 2;
+	}
 </style>

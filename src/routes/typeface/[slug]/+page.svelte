@@ -30,11 +30,6 @@
 		typeTesterValue = pangrams[randomValue];
 	}
 
-	//
-	function handleCopyVariation(variation) {
-		navigator.clipboard.writeText(`font-variation-settings: ${variation};`);
-	}
-
 	// Character cursor hover
 	class Cursor {
 		constructor(el) {
@@ -94,13 +89,13 @@
 </script>
 
 <svelte:head>
-	<title>{typefacename} | OpenTypeCollective</title>
+	<title>{typefacename} • OpenType Collective</title>
 	<meta name="description" content="" />
 </svelte:head>
 
 <div style:font-family={typeface.name} class="cursor" />
 
-<article class="content" style:font-family={typeface.name}>
+<article class="content-wrapper" style:font-family={typeface.name}>
 	<header class="header">
 		<h1 style:font-family={typeface.name} class="header-typename">{typefacename}</h1>
 		<span class="header-creator" style:font-family="var(--typeface-body)"
@@ -108,7 +103,7 @@
 		>
 	</header>
 
-	<section class="tester">
+	<section class="content type-tester">
 		<textarea
 			style:font-family={typeface?.name}
 			bind:value={typeTesterValue}
@@ -130,7 +125,7 @@
 		</label>
 	</section>
 
-	<section class="para-preview">
+	<section class="content para-preview">
 		<span
 			class="para-preview__type"
 			style:line-height="1.4"
@@ -154,32 +149,12 @@
 		</span>
 	</section>
 
-	<section class="named-variations">
+	<section class="content named-variations">
 		<h5 class="subtitle">Preset Variations</h5>
 		{#each namedVariations as v}
 			<div class="named-variation">
-				<small
-					class="variation-values"
-					style:font-family="Inter"
-					on:click={() =>
-						handleCopyVariation(v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', '))}
-				>
+				<small class="variation-values" style:font-family="Inter">
 					{v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="18"
-						height="18"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="feather feather-copy"
-					>
-						<rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-						<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-					</svg>
 				</small>
 				<input
 					class="named-variation-input"
@@ -191,13 +166,13 @@
 		{/each}
 	</section>
 
-	<section class="custom-variations">
+	<section class="content custom-variations">
 		<h5 class="subtitle">Custom Variations</h5>
 
 		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
 	</section>
 
-	<section class="character-sets">
+	<section class="content character-sets">
 		<h5 class="subtitle">Character Sets</h5>
 		{#each characterSets as set}
 			<div class="character-set">
@@ -221,7 +196,7 @@
 <style>
 	.header {
 		text-align: center;
-		margin-top: 30px;
+		margin-top: 60px;
 		margin-bottom: 70px;
 	}
 
@@ -236,19 +211,14 @@
 		margin-bottom: 0px;
 	}
 
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
 	textarea {
+		display: block;
+		width: 100%;
 		text-align: center;
 	}
 
 	/* Tester */
-	.tester {
+	.type-tester {
 		margin-bottom: 50px;
 	}
 
@@ -304,11 +274,6 @@
 		border-color: var(--color-white);
 	}
 
-	.para-preview {
-		width: 90%;
-		max-width: var(--layout-max-width);
-	}
-
 	.para-preview__type {
 		display: block;
 		margin-bottom: 20px;
@@ -316,8 +281,6 @@
 
 	.named-variations {
 		margin-top: 80px;
-		width: 90%;
-		max-width: var(--layout-max-width);
 	}
 
 	.named-variation {
@@ -332,7 +295,6 @@
 
 	.variation-values {
 		color: var(--color-grey);
-		cursor: pointer;
 		transition: all 0.3s;
 	}
 
@@ -347,8 +309,6 @@
 	/* Custom Variations */
 	.custom-variations {
 		margin-top: 80px;
-		width: 90%;
-		max-width: var(--layout-max-width);
 	}
 
 	.custom-variations h5 {
@@ -358,8 +318,6 @@
 	/* Character Sets */
 	.character-sets {
 		margin-top: 80px;
-		width: 90%;
-		max-width: var(--layout-max-width);
 	}
 
 	.character-set {
@@ -367,6 +325,7 @@
 	}
 
 	.character-set__title {
+		font-family: var(--typeface-body);
 		font-size: 20px;
 		font-weight: 600;
 		display: block;

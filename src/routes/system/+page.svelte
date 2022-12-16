@@ -5,8 +5,6 @@
 	import { onDestroy } from 'svelte';
 	import typeSystemStore from '../../stores/typeSystem';
 
-	let name = '';
-
 	let typeSystem = {};
 
 	const unsubscribe = typeSystemStore.subscribe((x) => {
@@ -16,41 +14,39 @@
 	onDestroy(unsubscribe);
 </script>
 
-<section class="content">
-	<header class="header">
-		<input bind:value={name} placeholder="Name your type system" />
-	</header>
+<svelte:head>
+	<title>System Creator • OpenType Collective</title>
+	<meta name="description" content="" />
+</svelte:head>
 
-	<section class="system">
+<section class="content-wrapper">
+	<section class="content intro">
+		<h2>Create a Typographic System</h2>
+		<span>Download CSS and typefaces below</span>
+	</section>
+
+	<section class="content system">
 		{#each Object.values(typeSystem) as typeEntry}
 			<TypeSystemEntry {typeEntry} />
 		{/each}
 	</section>
 
-	<section class="output">
+	<section class="content output">
 		<TypeSystemCSS {typeSystem} />
 	</section>
 </section>
 
 <style>
-	.header {
-		margin-top: 20px;
-		width: 90%;
-		max-width: var(--layout-max-width);
+	.intro {
+		margin-top: 60px;
+		text-align: center;
 	}
 
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	/* TODO make reusable class */
-	.system,
-	.output {
+	.system {
 		margin-top: 80px;
-		width: 90%;
-		max-width: var(--layout-max-width);
+	}
+
+	.output {
+		margin-top: 60px;
 	}
 </style>

@@ -5,8 +5,6 @@
 	export let typeSystem: TypeSystem | undefined = undefined;
 	let showMsg = false;
 
-	$: console.log('typeSystem', typeSystem);
-
 	function copyToClipboard(str: string) {
 		showMsg = true;
 		navigator.clipboard.writeText(str);
@@ -57,13 +55,13 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: 3rem 0 1.38rem;
+  margin: 1rem 0 1.38rem;
   line-height: 1.3;
 }
 
 ${enteries
 	.map((e) => {
-		return `${e}, .${e} {
+		return `${e === 'body' ? 'p' : e}, .${e} {
   font-family: var(--typeface-${e});
   font-size: var(--type-size-${e});
   font-variation-settings: var(--type-variation-${e});
@@ -89,7 +87,7 @@ ${enteries
 
 	{#each Array.from(new Set(Object.values(typeSystem).map((t) => t.typeface))) as typeface}
 		<div>
-			<a href={`/downloads/${typeface}.zip`} target="_blank" rel="noreferrer">
+			<a href={`/downloads/${typeface}.woff2`} target="_blank" rel="noreferrer">
 				{typeface} download
 			</a>
 		</div>

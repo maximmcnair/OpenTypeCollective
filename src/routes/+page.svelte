@@ -9,35 +9,27 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="intro">
-	<div class="intro-text">
+
+<section class="content-wrapper">
+	<div class="content intro-text">
 		<h1>
 			<CursorVariationType text="OpenType Collective" />
 		</h1>
 		<h3>A collection of open source typefaces that you can use on any opensource project.</h3>
-		<h3>Build a typographic system from our selected variable fonts then download fonts and CSS.</h3>
+		<h3>
+			Build a typographic system from curated variable fonts then download fonts and CSS.
+		</h3>
 	</div>
 </section>
 
-<section class="type-previews">
-	{#each typefaces as typeface}
-		<TypefacePreview {typeface} />
-	{/each}
-</section>
+{#each typefaces as typeface}
+	<TypefacePreview {typeface} />
+{/each}
 
 <style>
-	.intro {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
 	.intro-text {
 		margin-top: 40px;
 		margin-bottom: 200px;
-		width: 90%;
-		max-width: var(--layout-max-width);
 		text-align: center;
 	}
 

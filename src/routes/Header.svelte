@@ -4,7 +4,7 @@
 
 	let isHomePage = $page.route.id === '/';
 	$: isHomePage = $page.route.id === '/';
-	let visible = isHomePage ? false : true;
+	let visible = true;
 
 	function getScrollPosY() {
 		return window.scrollY || document.documentElement.scrollTop;
@@ -28,7 +28,8 @@
 
 		if (!isHomePage && currentScroll === 0) {
 			visible = true;
-		} else if (direction === 'up' && ((isHomePage && currentScroll > 600) || !isHomePage)) {
+		} else if (direction === 'up') {
+			// && ((isHomePage && currentScroll > 600) || !isHomePage)) {
 			visible = true;
 		} else {
 			visible = false;
@@ -48,11 +49,15 @@
 <svelte:window on:scroll={handleScroll} />
 
 <header class:header-hide={!visible}>
-	<h1>OpenType Collective</h1>
+	<a href="/">
+		<h1>
+			<span style:opacity={(isHomePage && currentScroll < 600)  ? 0 : 1}> OpenType Collective </span>
+		</h1>
+	</a>
 
 	<nav>
 		<a href="/">Typefaces</a>
-		<!-- <a href="/pairings">Pairings</a> -->
+		<a href="/system">System Creator</a>
 	</nav>
 </header>
 
@@ -67,8 +72,6 @@
 		z-index: 99;
 		transition: all 0.3s;
 
-    display: none;
-
 		position: fixed;
 		top: 0px;
 		left: 0px;
@@ -81,8 +84,13 @@
 	}
 
 	h1 {
-		font-size: 34px;
+    margin-top: 8px;
+		font-size: 28px;
 	}
+
+  h1 span {
+    transition: all .3s;
+  }
 
 	nav {
 		text-align: right;
@@ -90,9 +98,18 @@
 		gap: 20px;
 	}
 
+	header a {
+		color: var(--color-white);
+	}
+
 	nav a {
 		margin-top: 6px;
 		font-size: 22px;
-		color: var(--color-white);
+    font-family: var(--typeface-title);
+    color: var(--color-grey-light);
+    transition: all .3s;
 	}
+  nav a:hover {
+    color: var(--color-white);
+  }
 </style>

@@ -93,7 +93,7 @@ const typeSystem = writable<TypeSystem>({
 		name: 'Small',
 		typeface: 'Inter',
 		variations: [],
-		fontSize: '18px',
+		fontSize: '16px',
 		lineHeight: '1.5',
 		alignment: 'left',
 		example:

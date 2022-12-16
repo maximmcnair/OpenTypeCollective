@@ -59,11 +59,16 @@
 	</div>
 </section>
 
-<div class="select-bg" class:open={isOpen} on:click={() => toggleOptions()} />
+<div
+	class="select-bg"
+	class:open={isOpen}
+	on:click={() => toggleOptions()}
+	on:keypress={() => toggleOptions()}
+/>
 
 <style>
 	.select {
-		--select-background: red;
+		--select-background: var(--color-white);
 		--select-height: 50px;
 		--select-max-rows: 5.5;
 		--select-font-size: 24px;
@@ -76,16 +81,14 @@
 	}
 	.select-selected {
 		height: var(--select-height);
-		background-color: yellow;
 		padding: var(--select-padding);
 		cursor: pointer;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-    font-size: var(--select-font-size);
+		font-size: var(--select-font-size);
 	}
 	.select-options {
-		background-color: blue;
 		position: absolute;
 		top: calc(var(--select-height) + 10px);
 		max-height: calc(var(--select-height) * var(--select-max-rows));
@@ -100,7 +103,6 @@
 		display: block;
 	}
 	.select-option {
-		background-color: red;
 		background-color: var(--select-background);
 		height: var(--select-height);
 		padding: var(--select-padding);
@@ -108,7 +110,7 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-    font-size: var(--select-font-size);
+		font-size: var(--select-font-size);
 	}
 
 	.select-bg {
