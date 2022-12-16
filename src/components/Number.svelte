@@ -4,7 +4,8 @@
 </script>
 
 <div class="number">
-	<span>{value}px</span>
+	<input type="number" bind:value on:change={(evt) => updateNumber(evt.target.value)} />
+	<span>px</span>
 
 	<div
 		class="minus"
@@ -48,12 +49,23 @@
 <style>
 	.number {
 		display: flex;
+		position: relative;
+		width: 370px;
 	}
 
 	.number span {
+		position: absolute;
+		top: 9px;
+		left: 42px;
+		font-size: 19px;
+	}
+
+	.number input {
+    appearance: none;
 		height: 50px;
 		font-size: 19px;
-		padding: 10px 15px;
+    padding-top: 4px;
+    padding-left: 15px;
 	}
 
 	.minus,

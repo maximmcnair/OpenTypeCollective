@@ -7,8 +7,10 @@
 	import Number from './Number.svelte';
 	import { onDestroy } from 'svelte';
 
+	export let setSelectedEntry: (e: string) => void;
+	export let selectedEntry: string;
+
 	let typeSystem = {};
-	let selectedEntry = 'h1';
 
 	const unsubscribe = typeSystemStore.subscribe((x) => {
 		typeSystem = x;
@@ -57,9 +59,10 @@
 			name: e,
 			value: e
 		}))}
+		placeholder=""
 		selectedValue={selectedEntry}
 		onChange={(entry) => {
-			selectedEntry = entry;
+			setSelectedEntry(entry);
 		}}
 	/>
 	<Select

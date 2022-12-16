@@ -2,9 +2,10 @@
 	// import { page } from '$app/stores';
 	import TypeSystemEntry from '../../components/TypeSystemEntry.svelte';
 	import TypeSystemCSS from '../../components/TypeSystemCSS.svelte';
-	import { onDestroy } from 'svelte';
 	import typeSystemStore from '../../stores/typeSystem';
 	import TypeSystemSettings from '../../components/TypeSystemSettings.svelte';
+
+	import { onDestroy } from 'svelte';
 
 	let typeSystem = {};
 
@@ -13,6 +14,12 @@
 	});
 
 	onDestroy(unsubscribe);
+
+	let selectedEntry = 'h1';
+
+	function setSelectedEntry(val: string) {
+		selectedEntry = val;
+	}
 </script>
 
 <svelte:head>
@@ -27,11 +34,11 @@
 	</section>
 
 	<section class="content system">
-		<TypeSystemSettings />
+		<TypeSystemSettings {selectedEntry} {setSelectedEntry} />
 
 		<div class="content system-enteries">
 			{#each Object.values(typeSystem) as typeEntry}
-				<TypeSystemEntry {typeEntry} />
+				<TypeSystemEntry {typeEntry} {selectedEntry} {setSelectedEntry} />
 			{/each}
 		</div>
 	</section>
