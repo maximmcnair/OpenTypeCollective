@@ -7,20 +7,23 @@
 	import createCSSVariations from '../lib/createCSSVariations';
 
 	$: variation = createCSSVariations(typeEntry.variations);
+
+	let text = typeEntry.example || typeEntry.name;
 </script>
 
 <div class="type" class:active={typeEntry.key === selectedEntry}>
 	<span
 		on:click={() => setSelectedEntry(typeEntry.key)}
+		on:focus={() => setSelectedEntry(typeEntry.key)}
 		on:keypress={() => setSelectedEntry(typeEntry.key)}
 		class="type-text"
 		style:font-family={typeEntry.typeface}
 		style:font-size={typeEntry.fontSize}
 		style:line-height={typeEntry.lineHeight}
 		style:font-variation-settings={variation}
-	>
-		{typeEntry.example || typeEntry.name}
-	</span>
+    contenteditable="true"
+    bind:innerHTML={text}
+	/>
 </div>
 
 <style>
@@ -39,4 +42,7 @@
 	.type.active {
 		border-color: var(--color-gold);
 	}
+  .type-text {
+    outline: none;
+  }
 </style>

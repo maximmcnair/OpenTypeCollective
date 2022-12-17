@@ -68,7 +68,7 @@
 		return acc;
 	}, {});
 
-	$: console.log(typeEntry);
+	// $: console.log(typeEntry);
 </script>
 
 <div class="container">
@@ -169,7 +169,7 @@
 	.settings {
 		display: block;
 		position: sticky;
-		top: 10px;
+		top: 60px;
 		right: 0px;
 		width: 240px;
 		border: 2px solid var(--color-gold);
