@@ -15,9 +15,7 @@
 	});
 
 	onMount(() => {
-		console.log('onMount');
 		typeSystemStore.update((current) => {
-			console.log('update');
 			const newTypeface = $page.url.searchParams.get('typeface');
 
 			const newTypefaceData = typefaces.find((t) => t.name === newTypeface);
@@ -28,8 +26,6 @@
 						return acc;
 				  }, {})
 				: {};
-
-      console.log(defaultVariations);
 
 			if (newTypeface) {
 				const entries = Object.keys(typeSystem);
@@ -85,7 +81,7 @@
 
 <style>
 	.intro {
-		margin-top: 60px;
+		margin-top: 0px;
 		text-align: center;
 	}
 
