@@ -246,7 +246,16 @@ a.button {
 	color: var(--color-white);
 	font-family: var(--typeface-body);
 	font-size: var(--typesize-body);
+	user-select: none;
 	cursor: pointer;
+  transition: all .3s;
+}
+
+button-gold,
+.button-gold,
+a.button-gold {
+	border-color: var(--color-gold);
+	color: var(--color-gold);
 }
 
 button:hover,
@@ -254,7 +263,13 @@ button:hover,
 a.button:hover {
 	background-color: var(--color-white);
 	color: var(--color-black);
-  text-decoration: none;
+	text-decoration: none;
+}
+
+button-gold:hover,
+.button-gold:hover,
+a.button-gold:hover {
+	background-color: var(--color-gold);
 }
 
 button:active,
@@ -262,3 +277,6 @@ button:active,
 	transform: translate(0px, 1px);
 }
 
+.use-typeface-button {
+	margin-top: 50px;
+}

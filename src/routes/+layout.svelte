@@ -35,7 +35,7 @@
 
 <style>
 	footer {
-		margin: 130px 0px 30px 0px;
+		margin: 130px 0px 130px 0px;
 		text-align: center;
 	}
 </style>

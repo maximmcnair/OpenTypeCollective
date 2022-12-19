@@ -173,7 +173,7 @@
 	</section>
 
 	<div class="use-typeface-button">
-		<a class="button" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
+		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
 	</div>
 
 	<section class="content named-variations">
@@ -218,6 +218,10 @@
 			</div>
 		{/each}
 	</section>
+
+	<div class="use-typeface-button">
+		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
+	</div>
 </article>
 
 <style>
@@ -402,9 +406,5 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 2;
-	}
-
-	.use-typeface-button {
-		margin-top: 50px;
 	}
 </style>

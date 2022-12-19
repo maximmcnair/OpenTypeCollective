@@ -15,9 +15,11 @@
 	});
 
 	onMount(() => {
-		typeSystemStore.update((current) => {
-			const newTypeface = $page.url.searchParams.get('typeface');
+		const newTypeface = $page.url.searchParams.get('typeface');
 
+		if (!newTypeface) return;
+
+		typeSystemStore.update((current) => {
 			const newTypefaceData = typefaces.find((t) => t.name === newTypeface);
 
 			const defaultVariations = newTypefaceData?.variations
@@ -61,13 +63,13 @@
 <section class="content-wrapper">
 	<section class="content intro">
 		<h2>Create a Typographic System</h2>
-		<span>Download CSS and typefaces below</span>
+		<span>Config your system here <br />then download CSS and typefaces below</span>
 	</section>
 
 	<section class="content system">
 		<TypeSystemSettings {selectedEntry} {setSelectedEntry} />
 
-		<div class="content system-enteries">
+		<div class="system-enteries">
 			{#each Object.values(typeSystem) as typeEntry}
 				<TypeSystemEntry {typeEntry} {selectedEntry} {setSelectedEntry} />
 			{/each}

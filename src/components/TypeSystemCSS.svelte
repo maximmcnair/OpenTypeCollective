@@ -112,15 +112,25 @@ ${enteries
 	}
 
 	button {
-		background-color: var(--color-white);
-		color: var(--color-black);
-		font-size: 18;
+		background: transparent;
+		border: 2px solid var(--color-gold);
+		color: var(--color-gold);
+		user-select: none;
+		font-size: 15px;
 		font-weight: 800;
-		border: none;
 		display: block;
 		padding: 8px 10px;
 		border-radius: 5px;
 		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: var(--color-gold);
+		color: var(--color-black);
+	}
+
+	button:active {
+		transform: translate(0px, 1px);
 	}
 
 	.code {
@@ -135,6 +145,7 @@ ${enteries
 	.code pre {
 		background-color: var(--color-grey-dark);
 		padding: 0px 20px;
+		overflow: scroll;
 	}
 	.code code {
 		font-size: var(--typesize-small);

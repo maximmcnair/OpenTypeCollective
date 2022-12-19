@@ -30,6 +30,9 @@
 			variations[name] = randomValue;
 		}
 	}
+
+	// style:font-size={fontSize}
+	// style:font-size={fontSize}
 </script>
 
 {#if isMultiline}
@@ -38,15 +41,9 @@
 		style:font-variation-settings={variation}
 		bind:value
 		use:autosize
-		style:font-size={fontSize}
 	/>
 {:else}
-	<input
-		style:font-family={typeface.name}
-		style:font-variation-settings={variation}
-		bind:value
-		style:font-size={fontSize}
-	/>
+	<input style:font-family={typeface.name} style:font-variation-settings={variation} bind:value />
 {/if}
 
 <div class="variations">
@@ -66,9 +63,22 @@
 </div>
 
 <style>
-	textarea,
-	input {
+	textarea {
+		font-size: 80px;
 		text-align: center;
+	}
+	input {
+		font-size: 50px;
+		text-align: center;
+	}
+
+	@media (min-width: 600px) {
+		textarea {
+			font-size: 80px;
+		}
+		input {
+			font-size: 80px;
+		}
 	}
 
 	.variations {

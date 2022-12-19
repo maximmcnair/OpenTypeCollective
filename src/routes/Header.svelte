@@ -1,7 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-
-	$: console.log('pageId', $page.route.id);
 </script>
 
 <header class:page-home={$page.route.id === '/'} class:page-system={$page.route.id === '/system'}>

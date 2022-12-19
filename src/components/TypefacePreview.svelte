@@ -6,7 +6,9 @@
 <div class="typeface-preview">
 	<div class="content">
 		<TypefaceDials {typeface} defaultText={typeface.name} />
-		<a class="specimen-link" href={`/typeface/${typeface.name}`}>View Typeface Specimen</a>
+		<div class="specimen-link">
+			<a class="button button-gold" href={`/typeface/${typeface.name}`}>View Typeface Specimen</a>
+		</div>
 	</div>
 </div>
 
@@ -28,18 +30,8 @@
 	}
 
 	.specimen-link {
-		/* margin-top: 30px; */
 		margin-top: 60px;
 		text-align: center;
 		display: block;
-	}
-
-	@media (min-width: 800px) {
-		.specimen-link {
-			/* position: absolute; */
-			/* top: 0px; */
-			/* bottom: 30px; */
-			/* right: 30px; */
-		}
 	}
 </style>

@@ -161,7 +161,7 @@
 	.container {
 		position: absolute;
 		top: 20px;
-		right: -140px;
+		right: 0px;
 		z-index: 99;
 		height: 100%;
 	}
@@ -177,5 +177,35 @@
 
 	.variations {
 		padding: 10px 15px;
+	}
+
+  @media (min-width: 900px){
+		.container {
+			right: -20px;
+		}
+  }
+
+  @media (min-width: 1100px){
+		.container {
+			right: -120px;
+		}
+  }
+
+  @media (min-width: 1200px){
+		.container {
+			right: -180px;
+		}
+  }
+
+  @media (min-width: 1250px){
+		.container {
+			right: -200px;
+		}
+  }
+
+	@media (min-width: 1340px) {
+		.container {
+			right: -260px;
+		}
 	}
 </style>
