@@ -100,7 +100,10 @@
 
 <svelte:head>
 	<title>{typefacename} • OpenType Collective</title>
-	<meta name="description" content="A collection of open source typefaces that you can use on any opensource project." />
+	<meta
+		name="description"
+		content="A collection of open source typefaces that you can use on any opensource project."
+	/>
 
 	<link
 		rel="preload"
@@ -169,7 +172,9 @@
 		</span>
 	</section>
 
-	<a class="button" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
+	<div class="use-typeface-button">
+		<a class="button" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
+	</div>
 
 	<section class="content named-variations">
 		<h5 class="subtitle">Preset Variations</h5>
@@ -397,5 +402,9 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 2;
+	}
+
+	.use-typeface-button {
+		margin-top: 50px;
 	}
 </style>

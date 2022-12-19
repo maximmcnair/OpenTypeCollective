@@ -1,6 +1,6 @@
 <script lang="ts">
 	import typeSystemStore, { type TypeEntry } from '../stores/typeSystem';
-	import { typefaces } from '../lib/typefaces';
+	import { typefaces, type Variation } from '../lib/typefaces';
 	import typefaceMetaData from '../lib/typefaceMetaData.json';
 	import createCSSVariations from '../lib/createCSSVariations';
 	import Select from './Select.svelte';
@@ -28,8 +28,8 @@
 		return typeface?.variations;
 	}
 
-	let variations = [];
-	$: variations = getVariations(typeEntry);
+	let variations: Variation[] = [];
+	$: variations = getVariations(typeEntry) || [];
 
 	// Type entry
 	let typeEntry = typeSystem[selectedEntry];
@@ -85,10 +85,14 @@
 			placeholder="Typeface"
 			selectedValue={typeEntry.typeface}
 			onChange={(name) => {
-				const typeface = typefaces.find((t) => t.name === typeEntry.typeface);
+				const typeface = typefaces.find((t) => t.name === name);
 				updateTypeEntry({
 					typeface: name,
-					variations: typeface?.variations.map((v) => [v[0], v[5]]) || []
+					variations:
+						typeface?.variations.reduce((acc, val) => {
+							acc[val[0]] = val[4];
+							return acc;
+						}, {}) || {}
 				});
 			}}
 		/>
@@ -111,27 +115,35 @@
 				});
 			}}
 		/>
-		<Select
-			options={namedVariations.map((t) => ({
-				name: t.name,
-				value: t.variations,
-				style: `font-family: ${typeEntry.typeface}; font-variation-settings: ${createCSSVariations(
-					t.variations
-				)}`
-			}))}
-			placeholder="Preset variation"
-			selectedValue={typeEntry.variations}
-			onChange={(variations) => {
-				updateTypeEntry({
-					variations
-				});
-			}}
-		/>
+		{#if namedVariations.length}
+			<Select
+				options={namedVariations.map((t) => ({
+					name: t.name,
+					value: t.variations.reduce((acc, val) => {
+						acc[val[0]] = val[1];
+						return acc;
+					}, {}),
+					style: `font-family: ${
+						typeEntry.typeface
+					}; font-variation-settings: ${createCSSVariations(t.variations)}`
+				}))}
+				placeholder="Preset variation"
+				selectedValue={typeEntry.variations}
+				onChange={(variations) => {
+					updateTypeEntry({
+						variations
+					});
+				}}
+			/>
+		{/if}
 		<div class="variations">
-			{#each variations as v}
+			{#each Object.entries(typeEntry.variations) as variation}
 				<SettingsVariation
-					variation={v}
-					value={typeEntry.variations[v[0]]}
+					key={variation[0]}
+					value={variation[1]}
+					variation={variations.find((v) => {
+						return v[0] === variation[0];
+					})}
 					onChange={(key, val) => {
 						const newObj = { ...typeEntry.variations };
 						newObj[key] = parseInt(val);

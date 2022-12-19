@@ -22,6 +22,7 @@
 		border-radius: 100px;
 		transform: translate(-50%, 0px);
 		height: 70px;
+    width: 301px;
 	}
 
 	.header-content {
