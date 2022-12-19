@@ -6,9 +6,8 @@
 
 <svelte:head>
 	<title>OpenType Collective</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="A collection of open source typefaces that you can use on any opensource project." />
 </svelte:head>
-
 
 <section class="content-wrapper">
 	<div class="content intro-text">

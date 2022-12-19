@@ -2,22 +2,25 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="preload" href="/typefaces/Fraunces.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/typefaces/Inter.woff2" as="font" type="font/woff2" crossorigin>
 		%sveltekit.head%
     <style>
-      /* Inter */
-      @font-face {
-        src: url('/typefaces/Inter/Inter.var.woff2') format('woff2');
-        font-family: 'Inter';
-        font-style: normal;
-      }
       /* Fraunces */
       @font-face {
-        src: url('/typefaces/Fraunces/Fraunces.woff2') format('woff2');
+        src: url('/typefaces/Fraunces.woff2') format('woff2');
         font-family: 'Fraunces';
         font-style: normal;
+        font-display: block;
+      }
+      /* Inter */
+      @font-face {
+        src: url('/typefaces/Inter.woff2') format('woff2');
+        font-family: 'Inter';
+        font-style: normal;
+        font-display: block;
       }
     </style>
     <script

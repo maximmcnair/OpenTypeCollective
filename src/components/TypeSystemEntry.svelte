@@ -4,9 +4,9 @@
 	export let setSelectedEntry: (e: string) => void;
 
 	import type { TypeEntry } from '../stores/typeSystem';
-	import createCSSVariations from '../lib/createCSSVariations';
+	import { createCSSVariationsFromObject } from '../lib/createCSSVariations';
 
-	$: variation = createCSSVariations(typeEntry.variations);
+	$: variation = createCSSVariationsFromObject(typeEntry.variations);
 
 	let text = typeEntry.example || typeEntry.name;
 </script>
@@ -21,8 +21,8 @@
 		style:font-size={typeEntry.fontSize}
 		style:line-height={typeEntry.lineHeight}
 		style:font-variation-settings={variation}
-    contenteditable="true"
-    bind:innerHTML={text}
+		contenteditable="true"
+		bind:innerHTML={text}
 	/>
 </div>
 
@@ -42,7 +42,7 @@
 	.type.active {
 		border-color: var(--color-gold);
 	}
-  .type-text {
-    outline: none;
-  }
+	.type-text {
+		outline: none;
+	}
 </style>

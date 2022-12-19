@@ -9,61 +9,6 @@
 	color: var(--color-black);
 }
 
-/* Anybody */
-@font-face {
-	src: url('/typefaces/Anybody/Anybody.woff2') format('woff2');
-	font-family: 'Anybody';
-	font-style: normal;
-}
-/* Epilogue */
-@font-face {
-	src: url('/typefaces/Epilogue/Epilogue.woff2') format('woff2');
-	font-family: 'Epilogue';
-	font-style: normal;
-}
-/* Mona Sans */
-@font-face {
-	src: url('/typefaces/Mona Sans/Mona-Sans.woff2') format('woff2');
-	font-family: 'Mona Sans';
-	font-style: normal;
-}
-/* Hubot Sans */
-@font-face {
-	src: url('/typefaces/Hubot Sans/Hubot-Sans.woff2') format('woff2');
-	font-family: 'Hubot Sans';
-	font-style: normal;
-}
-/* Trispace */
-@font-face {
-	src: url('/typefaces/Trispace/Trispace.woff2') format('woff2');
-	font-family: 'Trispace';
-	font-style: normal;
-}
-/* Source Code Pro */
-@font-face {
-	src: url('/typefaces/Source Code Pro/SourceCodeVariable-Roman.otf.woff2') format('woff2');
-	font-family: 'Source Code Pro';
-	font-style: normal;
-}
-/* Source Sans */
-@font-face {
-	src: url('/typefaces/Source Sans/SourceSans3VF-Roman.otf.woff2') format('woff2');
-	font-family: 'Source Sans';
-	font-style: normal;
-}
-/* Source Serif */
-@font-face {
-	src: url('/typefaces/Source Serif/SourceSerif4Variable-Roman.otf.woff2') format('woff2');
-	font-family: 'Source Serif';
-	font-style: normal;
-}
-/* Space Grotesk */
-@font-face {
-	src: url('/typefaces/Space Grotesk/SpaceGrotesk.woff2') format('woff2');
-	font-family: 'Space Grotesk';
-	font-style: normal;
-}
-
 /* Base font-size of 18px */
 html {
 	font-size: 112.5%;
@@ -290,3 +235,30 @@ textarea:focus {
 	width: 90%;
 	max-width: var(--layout-max-width);
 }
+
+button,
+.button,
+a.button {
+	padding: 15px 40px;
+	border-radius: 55px;
+	border: 2px solid var(--color-white);
+	background-color: var(--color-black);
+	color: var(--color-white);
+	font-family: var(--typeface-body);
+	font-size: var(--typesize-body);
+	cursor: pointer;
+}
+
+button:hover,
+.button:hover,
+a.button:hover {
+	background-color: var(--color-white);
+	color: var(--color-black);
+  text-decoration: none;
+}
+
+button:active,
+.button:active {
+	transform: translate(0px, 1px);
+}
+

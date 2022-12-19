@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { TypeSystem } from '../stores/typeSystem';
-	import createCSSVariations from '../lib/createCSSVariations';
+	import { createCSSVariationsFromObject } from '../lib/createCSSVariations';
 
 	export let typeSystem: TypeSystem | undefined = undefined;
 	let showMsg = false;
@@ -43,7 +43,7 @@ ${enteries
 		return `  /* ${e} */
   --typeface-${e}: '${typeSystem[e].typeface}';
   --type-size-${e}: ${typeSystem[e].fontSize};
-  --type-variation-${e}: ${createCSSVariations(typeSystem[e].variations)};
+  --type-variation-${e}: ${createCSSVariationsFromObject(typeSystem[e].variations)};
 `;
 	})
 	.join('\n')}
@@ -87,7 +87,7 @@ ${enteries
 
 	{#each Array.from(new Set(Object.values(typeSystem).map((t) => t.typeface))) as typeface}
 		<div>
-			<a href={`/downloads/${typeface}.woff2`} target="_blank" rel="noreferrer">
+			<a href={`/typefaces/${typeface}.woff2`} target="_blank" rel="noreferrer">
 				{typeface} download
 			</a>
 		</div>

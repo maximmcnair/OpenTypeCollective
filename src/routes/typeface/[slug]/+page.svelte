@@ -86,11 +86,31 @@
 	function handleCharMouseLeave() {
 		cursor?.setChar(undefined);
 	}
+
+	const fontFaceImport = `<style>
+/* ${typefacename}} */
+@font-face {
+  src: url('/typefaces/${typefacename}.woff2') format('woff2');
+  font-family: '${typefacename}';
+  font-style: normal;
+  font-display: block;
+}
+</style>`;
 </script>
 
 <svelte:head>
 	<title>{typefacename} • OpenType Collective</title>
-	<meta name="description" content="" />
+	<meta name="description" content="A collection of open source typefaces that you can use on any opensource project." />
+
+	<link
+		rel="preload"
+		href={`/typefaces/${typefacename}.woff2`}
+		as="font"
+		type="font/woff2"
+		crossorigin="true"
+	/>
+
+	{@html fontFaceImport}
 </svelte:head>
 
 <div style:font-family={typeface.name} class="cursor" />
@@ -148,6 +168,8 @@
 			eget dolor morbi.
 		</span>
 	</section>
+
+	<a class="button" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
 
 	<section class="content named-variations">
 		<h5 class="subtitle">Preset Variations</h5>

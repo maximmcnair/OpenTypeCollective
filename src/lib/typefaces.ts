@@ -20,7 +20,7 @@ export const typefaces = [
     name: "Inter",
     metaDataKey: 'Inter',
     source: "https://github.com/rsms/inter",
-    license: License.SIL,
+    license: License.OFL,
     foundery: "rsms",
     variations: [
       ['wght', 'Weight', 100, 900, 400, 1],

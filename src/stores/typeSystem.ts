@@ -4,7 +4,9 @@ export interface TypeEntry {
 	key: string;
 	name: string;
 	typeface: string;
-	variations: [string, number][];
+	variations: {
+		[key: string]: number;
+	};
 	fontSize: string;
 	lineHeight: string;
 	alignment: 'left' | 'center' | 'right';
@@ -22,12 +24,15 @@ export interface TypeSystem {
 	small: TypeEntry;
 }
 
+const defaultTypeface = 'Inter';
+const defaultVariations = { wght: 400, slnt: 0 };
+
 const typeSystem = writable<TypeSystem>({
 	h1: {
 		key: 'h1',
 		name: 'Heading One',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '68px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -35,8 +40,8 @@ const typeSystem = writable<TypeSystem>({
 	h2: {
 		key: 'h2',
 		name: 'Heading Two',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '54px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -44,8 +49,8 @@ const typeSystem = writable<TypeSystem>({
 	h3: {
 		key: 'h3',
 		name: 'Heading Three',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '43px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -53,8 +58,8 @@ const typeSystem = writable<TypeSystem>({
 	h4: {
 		key: 'h4',
 		name: 'Heading Four',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '35px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -62,8 +67,8 @@ const typeSystem = writable<TypeSystem>({
 	h5: {
 		key: 'h5',
 		name: 'Heading Five',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '28px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -71,8 +76,8 @@ const typeSystem = writable<TypeSystem>({
 	h6: {
 		key: 'h6',
 		name: 'Heading Six',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '22px',
 		lineHeight: '1.5',
 		alignment: 'left'
@@ -80,8 +85,8 @@ const typeSystem = writable<TypeSystem>({
 	body: {
 		key: 'body',
 		name: 'Body',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '18px',
 		lineHeight: '1.5',
 		alignment: 'left',
@@ -91,8 +96,8 @@ const typeSystem = writable<TypeSystem>({
 	small: {
 		key: 'small',
 		name: 'Small',
-		typeface: 'Inter',
-		variations: [],
+		typeface: defaultTypeface,
+		variations: defaultVariations,
 		fontSize: '16px',
 		lineHeight: '1.5',
 		alignment: 'left',

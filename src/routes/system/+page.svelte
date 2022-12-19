@@ -1,16 +1,48 @@
 <script lang="ts">
-	// import { page } from '$app/stores';
+	import { page } from '$app/stores';
+	import { onDestroy, onMount } from 'svelte';
+
+	import { typefaces } from '../../lib/typefaces';
 	import TypeSystemEntry from '../../components/TypeSystemEntry.svelte';
 	import TypeSystemCSS from '../../components/TypeSystemCSS.svelte';
 	import typeSystemStore from '../../stores/typeSystem';
 	import TypeSystemSettings from '../../components/TypeSystemSettings.svelte';
 
-	import { onDestroy } from 'svelte';
-
 	let typeSystem = {};
 
 	const unsubscribe = typeSystemStore.subscribe((x) => {
 		typeSystem = x;
+	});
+
+	onMount(() => {
+		console.log('onMount');
+		typeSystemStore.update((current) => {
+			console.log('update');
+			const newTypeface = $page.url.searchParams.get('typeface');
+
+			const newTypefaceData = typefaces.find((t) => t.name === newTypeface);
+
+			const defaultVariations = newTypefaceData?.variations
+				? newTypefaceData.variations.reduce((acc, val) => {
+						acc[val[0]] = val[4];
+						return acc;
+				  }, {})
+				: {};
+
+      console.log(defaultVariations);
+
+			if (newTypeface) {
+				const entries = Object.keys(typeSystem);
+				const updated = { ...current };
+				// update each entry to newTypeface
+				for (const entry of entries) {
+					updated[entry].typeface = newTypeface;
+					updated[entry].variations = { ...defaultVariations };
+				}
+				return updated;
+			}
+			return current;
+		});
 	});
 
 	onDestroy(unsubscribe);
@@ -24,7 +56,10 @@
 
 <svelte:head>
 	<title>System Creator • OpenType Collective</title>
-	<meta name="description" content="" />
+	<meta
+		name="description"
+		content="A collection of open source typefaces that you can use on any opensource project."
+	/>
 </svelte:head>
 
 <section class="content-wrapper">
@@ -55,7 +90,7 @@
 	}
 
 	.system {
-    position: relative;
+		position: relative;
 		margin-top: 60px;
 	}
 

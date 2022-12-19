@@ -61,14 +61,6 @@
 
 	let namedVariations: any[] = [];
 	$: namedVariations = getNamedVariations(getMetaData(typeEntry));
-
-	let variationsByKey = {};
-	$: variationsByKey = typeEntry.variations.reduce((acc, val) => {
-		acc[val[0]] = val[1];
-		return acc;
-	}, {});
-
-	// $: console.log(typeEntry);
 </script>
 
 <div class="container">
@@ -96,7 +88,6 @@
 				const typeface = typefaces.find((t) => t.name === typeEntry.typeface);
 				updateTypeEntry({
 					typeface: name,
-					// TODO set default variations
 					variations: typeface?.variations.map((v) => [v[0], v[5]]) || []
 				});
 			}}
@@ -140,16 +131,12 @@
 			{#each variations as v}
 				<SettingsVariation
 					variation={v}
-					value={variationsByKey[v[0]]}
+					value={typeEntry.variations[v[0]]}
 					onChange={(key, val) => {
-						// TODO variations should be stored as an object
-						const currentVariations = typeEntry.variations.reduce((acc, val) => {
-							acc[val[0]] = val[1];
-							return acc;
-						}, {});
-						currentVariations[key] = parseInt(val);
+						const newObj = { ...typeEntry.variations };
+						newObj[key] = parseInt(val);
 						updateTypeEntry({
-							variations: Object.entries(currentVariations)
+							variations: newObj
 						});
 					}}
 				/>
@@ -178,19 +165,5 @@
 
 	.variations {
 		padding: 10px 15px;
-	}
-
-	/* old */
-	.settings-horizontal {
-		position: sticky;
-		top: 10px;
-		left: 0px;
-		right: 0px;
-		border: 2px solid var(--color-white);
-		background-color: var(--color-black);
-		height: 54px;
-		display: flex;
-		flex-direction: row;
-		z-index: 999;
 	}
 </style>
