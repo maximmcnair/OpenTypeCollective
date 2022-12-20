@@ -64,7 +64,7 @@
 
 <style>
 	textarea {
-		font-size: 80px;
+		font-size: 40px;
 		text-align: center;
 	}
 	input {

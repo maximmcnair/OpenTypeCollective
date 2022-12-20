@@ -130,7 +130,6 @@
 		<textarea
 			style:font-family={typeface?.name}
 			bind:value={typeTesterValue}
-			style:font-size={80}
 			use:autosize
 		/>
 
@@ -176,26 +175,27 @@
 		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
 	</div>
 
-	<section class="content named-variations">
-		<h5 class="subtitle">Preset Variations</h5>
-		{#each namedVariations as v}
-			<div class="named-variation">
-				<small class="variation-values" style:font-family="Inter">
-					{v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
-				</small>
-				<input
-					class="named-variation-input"
-					style:font-family="Inter"
-					style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
-					value={v.name}
-				/>
-			</div>
-		{/each}
-	</section>
+  {#if namedVariations.length}
+    <section class="content named-variations">
+      <h5 class="subtitle">Preset Variations</h5>
+      {#each namedVariations as v}
+        <div class="named-variation">
+          <small class="variation-values" style:font-family="Inter">
+            {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
+          </small>
+          <input
+            class="named-variation-input"
+            style:font-family="Inter"
+            style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
+            value={v.name}
+          />
+        </div>
+      {/each}
+    </section>
+  {/if}
 
 	<section class="content custom-variations">
 		<h5 class="subtitle">Custom Variations</h5>
-
 		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
 	</section>
 
@@ -244,7 +244,15 @@
 	textarea {
 		display: block;
 		width: 100%;
+		font-size: 40px;
+    line-height: 1.5;
 		text-align: center;
+	}
+
+	@media (min-width: 600px) {
+		textarea {
+			font-size: 80px;
+		}
 	}
 
 	/* Tester */

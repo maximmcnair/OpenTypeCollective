@@ -45,6 +45,10 @@
 		}));
 	}
 
+	function capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
 	function getMetaData(typeEntry: TypeEntry) {
 		const typeface = typefaces.find((t) => t.name === typeEntry.typeface);
 		return typeface ? typefaceMetaData[typeface.metaDataKey] : {};
@@ -67,7 +71,7 @@
 	<div class="settings">
 		<Select
 			options={entries.map((e) => ({
-				name: e,
+				name: capitalizeFirstLetter(e),
 				value: e
 			}))}
 			placeholder=""
@@ -160,48 +164,57 @@
 <style>
 	.container {
 		position: absolute;
-		top: 20px;
-		right: 0px;
 		z-index: 99;
 		height: 100%;
+		pointer-events: none;
 	}
 	.settings {
+		pointer-events: auto;
 		display: block;
-		position: sticky;
-		top: 60px;
-		right: 0px;
-		width: 240px;
 		border: 2px solid var(--color-gold);
 		background-color: var(--color-black);
+	}
+
+	@media (min-width: 600px) {
+		.container {
+			top: 20px;
+			right: 0px;
+		}
+		.settings {
+			position: sticky;
+			top: 60px;
+			right: 0px;
+			width: 240px;
+		}
 	}
 
 	.variations {
 		padding: 10px 15px;
 	}
 
-  @media (min-width: 900px){
+	@media (min-width: 900px) {
 		.container {
 			right: -20px;
 		}
-  }
+	}
 
-  @media (min-width: 1100px){
+	@media (min-width: 1100px) {
 		.container {
 			right: -120px;
 		}
-  }
+	}
 
-  @media (min-width: 1200px){
+	@media (min-width: 1200px) {
 		.container {
 			right: -180px;
 		}
-  }
+	}
 
-  @media (min-width: 1250px){
+	@media (min-width: 1250px) {
 		.container {
 			right: -200px;
 		}
-  }
+	}
 
 	@media (min-width: 1340px) {
 		.container {
