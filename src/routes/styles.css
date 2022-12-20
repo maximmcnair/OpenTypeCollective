@@ -280,3 +280,7 @@ button:active,
 .use-typeface-button {
 	margin-top: 50px;
 }
+
+.hide {
+  display: none;
+}

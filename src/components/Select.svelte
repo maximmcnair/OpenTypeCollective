@@ -95,10 +95,6 @@
 		background-color: var(--select-background);
 		/* border-right: 1px solid var(--color-white); */
 	}
-	.select.open {
-		/* background-color: var(--color-white); */
-		/* color: var(--color-black); */
-	}
 	.select-selected {
 		height: var(--select-height);
 		padding: var(--select-padding);
@@ -114,8 +110,8 @@
 		max-height: calc(var(--select-height) * var(--select-max-rows));
 		overflow-x: hidden;
 		overflow-y: scroll;
-		left: 0px;
-		right: 0px;
+		left: -2px;
+		right: -2px;
 		display: none;
 		z-index: 8;
 		border: 2px solid var(--color-white);

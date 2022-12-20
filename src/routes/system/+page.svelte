@@ -92,8 +92,14 @@
 		margin-top: 60px;
 	}
 
+	@media (min-width: 600px) {
+		.system {
+			margin-top: 20px;
+		}
+	}
+
 	.system-enteries {
-		margin-top: 20px;
+		margin-top: 80px;
 	}
 
 	.output {
