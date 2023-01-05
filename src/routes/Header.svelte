@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 </script>
 
+<div class="page-buffer" />
+
 <header class:page-home={$page.route.id === '/'} class:page-system={$page.route.id === '/system'}>
 	<div class="header-content">
 		<a href="/" class:active={$page.route.id === '/'}>Typefaces</a>
@@ -27,10 +29,10 @@
     header {
       position: fixed;
       bottom: auto;
-      left: auto;
       top: 20px;
-      right: 20px;
-      transform: none;
+    }
+    .page-buffer {
+      padding-top: 80px;
     }
   }
 
