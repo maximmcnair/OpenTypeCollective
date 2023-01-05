@@ -27,3 +27,10 @@
 		/>
 	</label>
 {/if}
+
+<style>
+	label {
+    display: block;
+		margin-bottom: 10px;
+	}
+</style>

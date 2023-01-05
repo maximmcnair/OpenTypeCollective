@@ -127,11 +127,16 @@
 	</header>
 
 	<section class="content type-tester">
-		<textarea
-			style:font-family={typeface?.name}
-			bind:value={typeTesterValue}
-			use:autosize
-		/>
+    <span class="type-tester__text" style:font-family={typeface?.name}>
+      {typeTesterValue}
+    </span>
+    {#if false}
+      <textarea
+        style:font-family={typeface?.name}
+        bind:value={typeTesterValue}
+        use:autosize
+      />
+    {/if}
 
 		<label class="pangram">
 			<span class="pangram-title" on:click={randomPangram}>Pick a Pangram</span>
@@ -172,6 +177,7 @@
 	</section>
 
 	<div class="use-typeface-button">
+		<a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
 		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
 	</div>
 
@@ -196,7 +202,7 @@
 
 	<section class="content custom-variations">
 		<h5 class="subtitle">Custom Variations</h5>
-		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText={typeTesterValue} />
+		<TypefaceDials isMultiline={true} fontSize={100} {typeface} defaultText="How vexingly quick daft zebras jump!" />
 	</section>
 
 	<section class="content character-sets">
@@ -220,6 +226,7 @@
 	</section>
 
 	<div class="use-typeface-button">
+		<a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
 		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
 	</div>
 </article>
@@ -258,6 +265,13 @@
 	/* Tester */
 	.type-tester {
 		margin-bottom: 50px;
+	}
+
+	.type-tester__text {
+    display: block;
+    font-size: 60px;
+    line-height: 1.3;
+    text-align: center;
 	}
 
 	.pangram {

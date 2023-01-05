@@ -258,6 +258,13 @@ a.button-gold {
 	color: var(--color-gold);
 }
 
+button-grey,
+.button-grey,
+a.button-grey {
+	border-color: var(--color-grey-light);
+	color: var(--color-grey-light);
+}
+
 button:hover,
 .button:hover,
 a.button:hover {
@@ -272,13 +279,22 @@ a.button-gold:hover {
 	background-color: var(--color-gold);
 }
 
+button-grey:hover,
+.button-grey:hover,
+a.button-grey:hover {
+	background-color: var(--color-grey-light);
+}
+
 button:active,
 .button:active {
 	transform: translate(0px, 1px);
 }
 
 .use-typeface-button {
+  display: flex;
+  flex-direction: row;
 	margin-top: 50px;
+  gap: 25px;
 }
 
 .hide {

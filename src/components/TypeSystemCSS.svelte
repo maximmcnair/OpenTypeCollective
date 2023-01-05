@@ -88,7 +88,7 @@ ${enteries
 	{#each Array.from(new Set(Object.values(typeSystem).map((t) => t.typeface))) as typeface}
 		<div>
 			<a href={`/typefaces/${typeface}.woff2`} target="_blank" rel="noreferrer">
-				{typeface} download
+				Download {typeface}
 			</a>
 		</div>
 	{/each}

@@ -23,6 +23,17 @@
     width: 301px;
 	}
 
+  @media (min-width: 1400px){
+    header {
+      position: fixed;
+      bottom: auto;
+      left: auto;
+      top: 20px;
+      right: 20px;
+      transform: none;
+    }
+  }
+
 	.header-content {
 		margin: 10px;
 		display: flex;
