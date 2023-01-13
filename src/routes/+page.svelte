@@ -8,7 +8,7 @@
 	<title>OpenType Collective</title>
 	<meta
 		name="description"
-		content="A collection of open source typefaces that you can use on any opensource project."
+		content="A collection of open source typefaces that you can use on any project."
 	/>
 </svelte:head>
 
