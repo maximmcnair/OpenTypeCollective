@@ -22,7 +22,7 @@
 		border-radius: 100px;
 		transform: translate(-50%, 0px);
 		height: 70px;
-    width: 311px;
+    width: 350px;
 	}
 
   @media (min-width: 800px){
@@ -51,7 +51,7 @@
 		color: var(--color-white);
     display: block;
 		transition: all 0.3s;
-		padding: 10px 15px;
+		padding: 10px 0px;
 		z-index: 4;
     text-align: center;
     position: absolute;
@@ -72,24 +72,16 @@
 		transition: left 0.3s;
 	}
 
+	header.page-home::after,
   .header-page-home {
 		left: 10px;
-		width: 130px;
-  }
-
-  .header-page-system {
-		width: 180px;
-		left: 130px;
-  }
-
-	header.page-home::after {
-		left: 10px;
-		width: 130px;
+		width: 150px;
 	}
 
-	header.page-system::after {
-		width: 160px;
-		left: 140px;
+	header.page-system::after,
+  .header-page-system {
+		width: 180px;
+		left: 160px;
 	}
 
 	a.active {
