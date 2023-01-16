@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Typeface } from '../lib/typefaces';
-	import autosize from '../lib/autosize';
+  import autosize from '../lib/autosize';
 
 	export let typeface: Typeface;
 	export let defaultText: string = '';
@@ -35,13 +35,23 @@
 	// style:font-size={fontSize}
 </script>
 
-{#if isMultiline}
+{#if false}
 	<textarea
 		style:font-family={typeface.name}
 		style:font-variation-settings={variation}
 		bind:value
 		use:autosize
 	/>
+{/if}
+
+{#if isMultiline}
+	<span
+    class="type-tester__text"
+		style:font-family={typeface.name}
+		style:font-variation-settings={variation}
+	>
+    {value}
+  </span>
 {:else}
 	<input style:font-family={typeface.name} style:font-variation-settings={variation} bind:value />
 {/if}
@@ -119,5 +129,13 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+	}
+
+	.type-tester__text {
+    cursor: default;
+    display: block;
+    font-size: 60px;
+    line-height: 1.3;
+    text-align: center;
 	}
 </style>
