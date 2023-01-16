@@ -124,6 +124,9 @@
 		<span class="header-creator" style:font-family="var(--typeface-body)"
 			>by <a href={typeface.source} target="_blank">{typeface.foundery}</a></span
 		>
+		<span class="header-license" style:font-family="var(--typeface-body)"> 
+      <a href={typeface?.licenseLink} target="_blank"> SIL Open Font License</a>
+    </span>
 	</header>
 
 	<section class="content type-tester">
@@ -241,6 +244,18 @@
 		margin-top: 50px;
 		margin-bottom: 0px;
 	}
+
+  .header-license{
+    display: block;
+		color: var(--color-grey-light);
+		margin-top: 10px;
+		margin-bottom: 0px;
+  }
+
+  .header-license a {
+		color: var(--color-grey-light);
+    font-weight: 500;
+  }
 
 	.header-creator {
 		margin-top: 0px;
