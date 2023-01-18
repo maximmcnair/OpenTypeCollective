@@ -210,12 +210,14 @@
 	.settings-header {
 		border: 2px solid var(--color-gold);
 		padding: 10px 15px;
+    -webkit-tap-highlight-color: transparent;
 		color: var(--color-gold);
 		position: relative;
 		cursor: pointer;
 	}
 
 	.settings-chevron {
+    -webkit-tap-highlight-color: transparent;
 		position: absolute;
 		top: 15px;
 		right: 15px;

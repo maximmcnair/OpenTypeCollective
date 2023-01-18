@@ -56,6 +56,7 @@
 		z-index: 4;
     text-align: center;
     position: absolute;
+    -webkit-tap-highlight-color: transparent;
 	}
 	header a:hover {
     text-decoration: none;

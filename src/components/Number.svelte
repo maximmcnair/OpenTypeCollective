@@ -72,6 +72,7 @@
 
 	.minus,
 	.plus {
+    -webkit-tap-highlight-color: transparent;
 		user-select: none;
 		width: 50px;
 		height: 50px;

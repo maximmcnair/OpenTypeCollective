@@ -96,6 +96,7 @@
 		/* border-right: 1px solid var(--color-white); */
 	}
 	.select-selected {
+    -webkit-tap-highlight-color: transparent;
 		height: var(--select-height);
 		padding: var(--select-padding);
 		cursor: pointer;
