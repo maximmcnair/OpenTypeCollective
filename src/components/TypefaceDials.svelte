@@ -135,7 +135,7 @@
 	.type-tester__text {
     cursor: default;
     display: block;
-    font-size: 60px;
+    font-size: var(--typesize-h2);
     line-height: 1.3;
     text-align: center;
 	}

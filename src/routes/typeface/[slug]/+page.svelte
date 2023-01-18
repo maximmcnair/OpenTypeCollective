@@ -238,8 +238,14 @@
 <style>
 	.header {
 		text-align: center;
-		margin-bottom: 70px;
+		margin-bottom: 40px;
 	}
+
+  @media (min-width: 800px){
+    .header {
+      margin-bottom: 70px;
+    }
+  }
 
 	.header-typename {
 		margin-top: 50px;
@@ -285,10 +291,17 @@
 
 	.type-tester__text {
     display: block;
-    font-size: 60px;
+    font-size: var(--typesize-h2);
     line-height: 1.3;
     text-align: center;
 	}
+
+  @media (min-width: 800px){
+    .type-tester__text {
+      font-size: var(--typesize-h1);
+      line-height: 1.3;
+    }
+  }
 
 	.pangram {
 		display: block;
