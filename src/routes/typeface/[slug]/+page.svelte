@@ -22,9 +22,11 @@
 		};
 	});
 
-  const truncatedVariations = namedVariations.slice(0, 15);
+  const truncateLength = 15;
 
-  let showAllVariations = false;
+  const truncatedVariations = namedVariations.slice(0, truncateLength);
+
+  let showAllVariations = truncateLength > namedVariations.length;
 
 	// pangram
 	function randomPangram() {
