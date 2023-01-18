@@ -257,6 +257,7 @@ a.button {
 	cursor: pointer;
   transition: all .3s;
   text-align: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button-gold,

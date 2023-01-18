@@ -105,6 +105,7 @@
 		padding-left: 35px;
 		cursor: pointer;
 		user-select: none;
+    -webkit-tap-highlight-color: transparent;
 		color: var(--color-grey-light);
 		transition: all 0.3s;
 	}
