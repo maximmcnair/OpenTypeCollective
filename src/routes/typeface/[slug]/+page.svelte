@@ -22,6 +22,10 @@
 		};
 	});
 
+  const truncatedVariations = namedVariations.slice(0, 15);
+
+  let showAllVariations = false;
+
 	// pangram
 	function randomPangram() {
 		const max = pangrams.length;
@@ -187,19 +191,39 @@
   {#if namedVariations.length}
     <section class="content named-variations">
       <h5 class="subtitle">Preset Variations</h5>
-      {#each namedVariations as v}
-        <div class="named-variation">
-          <small class="variation-values" style:font-family="Inter">
-            {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
-          </small>
-          <input
-            class="named-variation-input"
-            style:font-family="Inter"
-            style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
-            value={v.name}
-          />
+      {#if showAllVariations}
+        {#each namedVariations as v}
+          <div class="named-variation">
+            <small class="variation-values" style:font-family="Inter">
+              {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
+            </small>
+            <input
+              class="named-variation-input"
+              style:font-family="Inter"
+              style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
+              value={v.name}
+            />
+          </div>
+        {/each}
+      {:else}
+        {#each truncatedVariations as v}
+          <div class="named-variation">
+            <small class="variation-values" style:font-family="Inter">
+              {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
+            </small>
+            <input
+              class="named-variation-input"
+              style:font-family="Inter"
+              style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
+              value={v.name}
+            />
+          </div>
+        {/each}
+
+        <div class="center">
+          <button class="button button-grey" on:click={() => showAllVariations = true}>Show all variations</button>
         </div>
-      {/each}
+      {/if}
     </section>
   {/if}
 

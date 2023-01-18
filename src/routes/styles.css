@@ -315,3 +315,9 @@ button:active,
 .hide {
   display: none;
 }
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

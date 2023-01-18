@@ -139,4 +139,11 @@
     line-height: 1.3;
     text-align: center;
 	}
+
+  @media (min-width: 800px){
+    .type-tester__text {
+      font-size: var(--typesize-h1);
+      line-height: 1.3;
+    }
+  }
 </style>
