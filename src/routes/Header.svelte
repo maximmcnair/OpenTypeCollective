@@ -13,7 +13,7 @@
 
 <style>
 	header {
-		background: rgba(255, 255, 255, 0.11);
+		background: rgba(0, 0, 0, 0.11);
 		backdrop-filter: blur(30px);
 		position: fixed;
 		bottom: 20px;
@@ -28,6 +28,7 @@
   @media (min-width: 800px){
     header {
       position: fixed;
+      background: rgba(255, 255, 255, 0.11);
       bottom: auto;
       top: 20px;
     }

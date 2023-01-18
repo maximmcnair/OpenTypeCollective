@@ -29,7 +29,12 @@
 	</main>
 
 	<footer>
-		A tool by <a href="https://www.maximmcnair.com" target="_blank">Maxim McNair</a>
+    <div>
+		  A tool by <a href="https://www.maximmcnair.com" target="_blank" rel="noreferrer">Maxim McNair</a>
+    </div>
+    <div> 
+      This is an open source project on <a href="https://github.com/maximmcnair/OpenTypeCollective" target="_blank" rel="noreferrer">Github</a>
+    </div>
 	</footer>
 </div>
 

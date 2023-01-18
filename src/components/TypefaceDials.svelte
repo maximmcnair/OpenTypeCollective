@@ -4,7 +4,7 @@
 
 	export let typeface: Typeface;
 	export let defaultText: string = '';
-	export let fontSize: number = 80;
+	// export let fontSize: number = 80;
 	export let isMultiline: boolean = false;
 
 	let value = defaultText;

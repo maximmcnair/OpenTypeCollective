@@ -8,7 +8,7 @@
 	<title>OpenType Collective</title>
 	<meta
 		name="description"
-		content="A collection of open source typefaces that you can use on any project."
+		content="A showcase of open source typefaces that you can use on any project."
 	/>
 </svelte:head>
 
@@ -17,8 +17,8 @@
 		<h1>
 			<CursorVariationType text="OpenType Collective" />
 		</h1>
-		<h3>A collection of open source typefaces that you can use on any opensource project.</h3>
-		<h3>Build a typographic system from curated variable fonts then download fonts and CSS.</h3>
+		<h3>A showcase of open source variable typefaces that you can use on any project.</h3>
+		<h3>Either download the fonts or build a typographic system with our system creator.</h3>
 	</div>
 </section>
 

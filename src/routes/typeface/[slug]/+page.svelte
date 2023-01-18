@@ -179,10 +179,10 @@
 		</span>
 	</section>
 
-	<div class="use-typeface-button">
-		<a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
-		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
-	</div>
+  <div class="use-typeface-button">
+    <a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
+    <a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Build System with Typeface</a>
+  </div>
 
   {#if namedVariations.length}
     <section class="content named-variations">
@@ -228,11 +228,12 @@
 		{/each}
 	</section>
 
-	<div class="use-typeface-button">
-		<a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
-		<a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Use Typeface</a>
-	</div>
+  <div class="use-typeface-button">
+    <a class="button button-grey" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
+    <a class="button button-gold" href={`/system/?typeface=${typefacename}`}>Build System with Typeface</a>
+  </div>
 </article>
+
 
 <style>
 	.header {
