@@ -18,7 +18,7 @@
 			<CursorVariationType text="OpenType Collective" />
 		</h1>
 		<h3>A showcase of open source variable typefaces that you can use on any project.</h3>
-		<h3>Either download the fonts or build a typographic system with our system creator.</h3>
+		<h3 style:display='none'>Either download the fonts or build a typographic system with our system creator.</h3>
 	</div>
 </section>
 
