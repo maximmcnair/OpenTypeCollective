@@ -51,6 +51,9 @@ ${enteries
 
 body {
   line-height: 1.7;
+  font-family: var(--typeface-body);
+  font-size: var(--type-size-body);
+  font-variation-settings: var(--type-variation-body);
 }
 
 h1, h2, h3, h4, h5, h6,

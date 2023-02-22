@@ -196,12 +196,12 @@
       {#if showAllVariations}
         {#each namedVariations as v}
           <div class="named-variation">
-            <small class="variation-values" style:font-family="Inter">
+            <small class="variation-values" style:font-family={typefacename}>
               {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
             </small>
             <input
               class="named-variation-input"
-              style:font-family="Inter"
+              style:font-family={typefacename}
               style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
               value={v.name}
             />
@@ -210,12 +210,12 @@
       {:else}
         {#each truncatedVariations as v}
           <div class="named-variation">
-            <small class="variation-values" style:font-family="Inter">
+            <small class="variation-values" style:font-family={typefacename}>
               {v.name} : {v.variations.map((v) => `${v[0]}: ${v[1]}`).join(', ')}
             </small>
             <input
               class="named-variation-input"
-              style:font-family="Inter"
+              style:font-family={typefacename}
               style:font-variation-settings={v.variations.map((v) => `"${v[0]}" ${v[1]}`).join(', ')}
               value={v.name}
             />

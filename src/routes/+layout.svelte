@@ -4,6 +4,7 @@
 	import Header from './Header.svelte';
 	import './styles.css';
 	import FontFaceObserver from 'fontfaceobserver';
+  // import Cursor from '../components/Cursor.svelte'
 	import { loadTypefaces } from '../lib/loadTypefaces';
 
 	onMount(async () => {
@@ -20,6 +21,8 @@
 		});
 	});
 </script>
+
+<!-- <Cursor /> -->
 
 <div class="app">
 	<Header />

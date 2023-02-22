@@ -30,8 +30,6 @@
 				this.mouse.y - heightOffset
 			}px)`;
 
-			console.log('render', this.mouse);
-
 			// if (this.img.src) {
 			//   style.display = "block";
 			//   const heightOffset = this.img.height / 2;
@@ -62,8 +60,8 @@
 
 <style>
 	.cursor {
-		width: 20px;
-		height: 20px;
+		width: 10px;
+		height: 10px;
 		max-width: 100vh;
 		position: fixed;
 		top: 0px;
@@ -73,6 +71,7 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 		pointer-events: none;
+		background-color: var(--color-white);
 		z-index: 2;
 	}
 </style>

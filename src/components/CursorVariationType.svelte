@@ -15,10 +15,10 @@
 	let yValue: number | undefined = 0;
 
 	function handleMouseMove(evt: MouseEvent) {
-    if (!("ontouchstart" in document.documentElement)){
-      x = evt.clientX;
-      y = evt.clientY;
-    }
+		if (!('ontouchstart' in document.documentElement)) {
+			x = evt.clientX;
+			y = evt.clientY;
+		}
 	}
 
 	$: xValue = browser && x ? range(0, window.innerWidth, 40, 144, x) : undefined;
