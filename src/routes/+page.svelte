@@ -18,7 +18,9 @@
 			<CursorVariationType text="OpenType Collective" />
 		</h1>
 		<h3>A showcase of open source variable typefaces that you can use on any project.</h3>
-		<h3 style:display='none'>Either download the fonts or build a typographic system with our system creator.</h3>
+		<h3 style:display="none">
+			Either download the fonts or build a typographic system with our system creator.
+		</h3>
 	</div>
 </section>
 
@@ -31,7 +33,7 @@
 		margin-top: 40px;
 		text-align: center;
 		margin-bottom: 80px;
-    max-width: 500px;
+		max-width: 500px;
 	}
 
 	h1 {
@@ -48,7 +50,7 @@
 	@media (min-width: 800px) {
 		.intro-text {
 			margin-bottom: 160px;
-      max-width: var(--layout-max-width);
+			max-width: var(--layout-max-width);
 		}
 		h1 {
 			font-size: 140px;
