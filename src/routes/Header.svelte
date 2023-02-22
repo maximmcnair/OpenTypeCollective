@@ -23,6 +23,7 @@
 		transform: translate(-50%, 0px);
 		height: 70px;
     width: 350px;
+    display: none;
 	}
 
   @media (min-width: 800px){
@@ -33,7 +34,8 @@
       top: 20px;
     }
     .page-buffer {
-      padding-top: 80px;
+      /* padding-top: 80px; */
+      padding-top: 20px;
     }
   }
 
