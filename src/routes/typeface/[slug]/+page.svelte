@@ -114,7 +114,7 @@
 		.map((v) => `"${v[0]}" ${variations[v[0]]}`)
 		.join(', ');
 
-  $: console.log(variations);
+  // $: console.log(variations);
 
 	function dice() {
 		// randomise each variation
@@ -131,6 +131,11 @@
       return acc;
     }, {});
 	}
+
+  function copyVariant(evt){
+    evt.preventDefault();
+    navigator.clipboard.writeText(`font-variation-settings: ${variation};`);
+  }
 </script>
 
 <svelte:head>
@@ -191,6 +196,7 @@
 	</section>
 
   <div class="use-typeface-button">
+    <a class="button button-grey" href="#" on:click={copyVariant}>Copy CSS</a>
     <a class="button button-gold" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
   </div>
 
@@ -312,6 +318,7 @@
 	</section>
 
   <div class="use-typeface-button">
+    <a class="button button-grey" on:click={copyVariant}>Copy CSS</a>
     <a class="button button-gold" href={`/typefaces/${typefacename}.woff2`} target="_blank" rel="noreferrer">Download Typeface</a>
   </div>
 </article>
