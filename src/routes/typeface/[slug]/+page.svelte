@@ -481,14 +481,6 @@
 	}
 
 	/* Custom Variations */
-	.custom-variations {
-		position: sticky;
-		top: 0px;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		background-color: var(--color-black);
-	}
-
 	.custom-variations h5 {
 		margin-bottom: 40px;
 	}
